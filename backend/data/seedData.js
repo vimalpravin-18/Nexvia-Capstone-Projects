@@ -1,0 +1,268 @@
+const initialUsers = [
+  {
+    id: "usr_admin",
+    name: "Platform Admin",
+    email: "admin@nexvia.com",
+    password: "password123",
+    role: "admin",
+    vendorProfile: null,
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: "usr_vendor1",
+    name: "TechWorld Electronics",
+    email: "vendor1@nexvia.com",
+    password: "password123",
+    role: "vendor",
+    vendorProfile: {
+      storeName: "TechWorld Official",
+      description: "Premium gadgets, smartphones, and audio gear.",
+      commissionRate: 10,
+      balance: 14200,
+      totalSales: 48,
+      status: "approved"
+    },
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: "usr_vendor2",
+    name: "UrbanStyle Apparel",
+    email: "vendor2@nexvia.com",
+    password: "password123",
+    role: "vendor",
+    vendorProfile: {
+      storeName: "UrbanStyle Fashion",
+      description: "Trendy street wear and luxury footwear.",
+      commissionRate: 12,
+      balance: 8900,
+      totalSales: 27,
+      status: "approved"
+    },
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: "usr_customer",
+    name: "John Doe",
+    email: "customer@nexvia.com",
+    password: "password123",
+    role: "customer",
+    vendorProfile: null,
+    createdAt: new Date().toISOString()
+  }
+];
+
+const initialProducts = [
+  {
+    id: "prod_1",
+    name: "Apple iPhone 16 Pro Max (256GB, Desert Titanium)",
+    description: "6.9-inch Super Retina XDR display, A18 Pro chip, 48MP Fusion camera system with 4K 120 fps Dolby Vision.",
+    price: 134900,
+    category: "Mobiles",
+    brand: "Apple",
+    stock: 15,
+    rating: 4.8,
+    numReviews: 142,
+    images: [
+      "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=700&q=80",
+      "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=700&q=80"
+    ],
+    vendorId: "usr_vendor1",
+    vendorName: "TechWorld Official",
+    featured: true,
+    createdAt: new Date(Date.now() - 86400000 * 5).toISOString()
+  },
+  {
+    id: "prod_2",
+    name: "Sony WH-1000XM5 Wireless Noise-Cancelling Headphones",
+    description: "Industry-leading noise cancellation with two processors and 8 microphones. Up to 30 hours battery life.",
+    price: 29990,
+    category: "Audio",
+    brand: "Sony",
+    stock: 28,
+    rating: 4.7,
+    numReviews: 89,
+    images: [
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=700&q=80"
+    ],
+    vendorId: "usr_vendor1",
+    vendorName: "TechWorld Official",
+    featured: true,
+    createdAt: new Date(Date.now() - 86400000 * 4).toISOString()
+  },
+  {
+    id: "prod_3",
+    name: "Samsung Galaxy Watch Ultra 47mm LTE",
+    description: "Cushion design with titanium grade 4 casing, sapphire crystal glass, multi-day battery life and dual-frequency GPS.",
+    price: 59999,
+    category: "Wearables",
+    brand: "Samsung",
+    stock: 12,
+    rating: 4.6,
+    numReviews: 54,
+    images: [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=700&q=80"
+    ],
+    vendorId: "usr_vendor1",
+    vendorName: "TechWorld Official",
+    featured: false,
+    createdAt: new Date(Date.now() - 86400000 * 3).toISOString()
+  },
+  {
+    id: "prod_4",
+    name: "Urban Oversized Heavyweight Cotton Hoodie",
+    description: "420 GSM french terry cotton, dropped shoulders, relaxed fit silhouette, fleece lined interior for superior comfort.",
+    price: 2499,
+    category: "Fashion",
+    brand: "UrbanStyle",
+    stock: 65,
+    rating: 4.5,
+    numReviews: 38,
+    images: [
+      "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=700&q=80"
+    ],
+    vendorId: "usr_vendor2",
+    vendorName: "UrbanStyle Fashion",
+    featured: true,
+    createdAt: new Date(Date.now() - 86400000 * 2).toISOString()
+  },
+  {
+    id: "prod_5",
+    name: "Classic Retro Suede Low-Top Sneakers",
+    description: "Handcrafted suede leather with cushioned EVA midsole, vulcanized gum rubber sole and breathable canvas lining.",
+    price: 4999,
+    category: "Footwear",
+    brand: "UrbanStyle",
+    stock: 30,
+    rating: 4.9,
+    numReviews: 76,
+    images: [
+      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=700&q=80"
+    ],
+    vendorId: "usr_vendor2",
+    vendorName: "UrbanStyle Fashion",
+    featured: false,
+    createdAt: new Date(Date.now() - 86400000 * 2).toISOString()
+  },
+  {
+    id: "prod_6",
+    name: "Keychron K2 Pro Wireless Mechanical Keyboard",
+    description: "75% compact layout, QMK/VIA programmable, hot-swappable Keychron K Pro switches with RGB backlighting.",
+    price: 8499,
+    category: "Accessories",
+    brand: "Keychron",
+    stock: 20,
+    rating: 4.8,
+    numReviews: 61,
+    images: [
+      "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=700&q=80"
+    ],
+    vendorId: "usr_vendor1",
+    vendorName: "TechWorld Official",
+    featured: true,
+    createdAt: new Date().toISOString()
+  }
+];
+
+const initialCoupons = [
+  {
+    code: "WELCOME10",
+    discountPercent: 10,
+    minPurchase: 1000,
+    maxDiscount: 2000,
+    active: true
+  },
+  {
+    code: "FESTIVE20",
+    discountPercent: 20,
+    minPurchase: 3000,
+    maxDiscount: 5000,
+    active: true
+  },
+  {
+    code: "SUPER500",
+    flatDiscount: 500,
+    minPurchase: 2000,
+    active: true
+  }
+];
+
+const initialOrders = [
+  {
+    id: "ord_101",
+    customer: {
+      id: "usr_customer",
+      name: "John Doe",
+      email: "customer@nexvia.com"
+    },
+    items: [
+      {
+        productId: "prod_2",
+        name: "Sony WH-1000XM5 Wireless Noise-Cancelling Headphones",
+        price: 29990,
+        qty: 1,
+        vendorId: "usr_vendor1",
+        vendorName: "TechWorld Official",
+        image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=700&q=80"
+      }
+    ],
+    shippingAddress: {
+      fullName: "John Doe",
+      street: "142 Innovation Park, 4th Avenue",
+      city: "Bengaluru",
+      state: "Karnataka",
+      pincode: "560001",
+      phone: "+91 9876543210"
+    },
+    paymentMethod: "Razorpay",
+    paymentStatus: "paid",
+    totalAmount: 29990,
+    discountAmount: 0,
+    finalAmount: 29990,
+    platformCommissionTotal: 2999,
+    vendorPayouts: [
+      {
+        vendorId: "usr_vendor1",
+        subtotal: 29990,
+        commissionFee: 2999,
+        payoutAmount: 26991,
+        status: "pending_payout"
+      }
+    ],
+    orderStatus: "shipped",
+    timeline: [
+      { status: "placed", timestamp: new Date(Date.now() - 86400000 * 2).toISOString(), note: "Order placed successfully" },
+      { status: "packed", timestamp: new Date(Date.now() - 86400000 * 1).toISOString(), note: "Item packed at TechWorld Warehouse" },
+      { status: "shipped", timestamp: new Date().toISOString(), note: "Dispatched via Express Courier" }
+    ],
+    createdAt: new Date(Date.now() - 86400000 * 2).toISOString()
+  }
+];
+
+const initialReviews = [
+  {
+    id: "rev_1",
+    productId: "prod_1",
+    userId: "usr_customer",
+    userName: "John Doe",
+    rating: 5,
+    comment: "Exceptional build quality and the battery life is unbelievable!",
+    createdAt: new Date(Date.now() - 86400000 * 3).toISOString()
+  },
+  {
+    id: "rev_2",
+    productId: "prod_2",
+    userId: "usr_customer",
+    userName: "John Doe",
+    rating: 5,
+    comment: "Best noise cancellation on the market. Sound profile is warm and deep.",
+    createdAt: new Date(Date.now() - 86400000 * 1).toISOString()
+  }
+];
+
+module.exports = {
+  initialUsers,
+  initialProducts,
+  initialCoupons,
+  initialOrders,
+  initialReviews
+};

@@ -1,0 +1,159 @@
+.my-orders-page {
+  padding: 30px 0 60px;
+}
+
+.orders-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.orders-header h1 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.orders-header p {
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.empty-orders-card {
+  text-align: center;
+  padding: 60px 20px;
+  max-width: 500px;
+  margin: 40px auto;
+}
+
+.empty-orders-card h3 {
+  font-size: 1.25rem;
+  margin: 12px 0 6px;
+}
+
+.empty-orders-card p {
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order-history-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+}
+
+.order-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.order-id-meta strong {
+  display: block;
+  font-size: 0.95rem;
+  color: #0f172a;
+}
+
+.order-date {
+  font-size: 0.78rem;
+  color: #94a3b8;
+}
+
+.order-status-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.order-amount {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.order-items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+.order-item-chip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f8fafc;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.order-item-chip img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.item-chip-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.item-chip-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.item-chip-details small {
+  color: #475569;
+  font-size: 0.75rem;
+}
+
+.chip-vendor {
+  font-size: 0.72rem;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.order-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 12px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.order-payment-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.orders-loading {
+  text-align: center;
+  padding: 60px;
+  color: #64748b;
+}
