@@ -19,8 +19,8 @@
         "storeName": "TechWorld Official",
         "description": "Premium gadgets, smartphones, and audio gear.",
         "commissionRate": 10,
-        "balance": 14200,
-        "totalSales": 48,
+        "balance": 41191,
+        "totalSales": 49,
         "status": "approved"
       },
       "createdAt": "2026-10-25T04:27:59.711Z"
@@ -61,7 +61,7 @@
       "brand": "Keychron",
       "stock": 20,
       "rating": 5,
-      "numReviews": 3,
+      "numReviews": 2,
       "images": [
         "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=700&q=80"
       ],
@@ -186,6 +186,58 @@
   ],
   "orders": [
     {
+      "id": "ord_1794664143139",
+      "customer": {
+        "id": "usr_customer",
+        "name": "John Doe",
+        "email": "customer@nexvia.com"
+      },
+      "items": [
+        {
+          "productId": "prod_2",
+          "name": "Sony WH-1000XM5 Headphones",
+          "price": 29990,
+          "qty": 1,
+          "vendorId": "usr_vendor1",
+          "vendorName": "TechWorld Official"
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "John Doe",
+        "phone": "+91 9876543210",
+        "street": "142 Innovation Park",
+        "city": "Bengaluru",
+        "state": "Karnataka",
+        "pincode": "560001"
+      },
+      "paymentMethod": "Razorpay",
+      "paymentStatus": "paid",
+      "totalAmount": 29990,
+      "discountAmount": 0,
+      "couponCode": null,
+      "finalAmount": 29990,
+      "platformCommissionTotal": 2999,
+      "vendorPayouts": [
+        {
+          "vendorId": "usr_vendor1",
+          "vendorName": "TechWorld Official",
+          "subtotal": 29990,
+          "commissionFee": 2999,
+          "payoutAmount": 26991,
+          "status": "allocated"
+        }
+      ],
+      "orderStatus": "placed",
+      "timeline": [
+        {
+          "status": "placed",
+          "timestamp": "2026-11-14T13:49:03.139Z",
+          "note": "Order received and confirmed via Razorpay"
+        }
+      ],
+      "createdAt": "2026-11-14T13:49:03.139Z"
+    },
+    {
       "id": "ord_101",
       "customer": {
         "id": "usr_customer",
@@ -249,15 +301,6 @@
   ],
   "reviews": [
     {
-      "id": "rev_test_1794659513276",
-      "productId": "prod_6",
-      "userId": "usr_customer",
-      "userName": "John Doe",
-      "rating": 5,
-      "comment": "Super fast delivery and great quality!",
-      "createdAt": "2026-11-14T12:31:53.276Z"
-    },
-    {
       "id": "rev_test_1793863464766",
       "productId": "prod_6",
       "userId": "usr_customer",
@@ -303,7 +346,7 @@
         "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=700&q=80",
         "vendorId": "usr_vendor1",
         "vendorName": "TechWorld Official",
-        "qty": 1
+        "qty": 3
       },
       {
         "id": "prod_4",

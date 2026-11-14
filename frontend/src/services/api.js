@@ -232,7 +232,9 @@ export const api = {
       headers: getHeaders(),
       body: JSON.stringify({ amount })
     });
-    return res.json();
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.message || 'Failed to create payment order');
+    return data;
   },
 
   async verifyPayment(paymentData) {
@@ -241,7 +243,9 @@ export const api = {
       headers: getHeaders(),
       body: JSON.stringify(paymentData)
     });
-    return res.json();
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.message || 'Payment verification failed');
+    return data;
   },
 
   async uploadImage(file) {
