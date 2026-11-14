@@ -14,3 +14,4 @@ router.get('/me', protect, getMe);
 router.put('/vendor/profile', protect, authorize('vendor'), updateVendorProfile);
 
 module.exports = router;
+

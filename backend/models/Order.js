@@ -92,7 +92,7 @@ const orderSchema = new mongoose.Schema({
   },
   paymentMethod: {
     type: String,
-    enum: ['Razorpay', 'Stripe', 'Stripe Connect', 'COD'],
+    enum: ['Razorpay', 'COD'],
     default: 'Razorpay'
   },
   paymentStatus: {
@@ -132,3 +132,4 @@ const orderSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.models.Order || mongoose.model('Order', orderSchema);
+

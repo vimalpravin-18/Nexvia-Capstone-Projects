@@ -186,44 +186,29 @@ function CheckoutPage() {
             <div className="checkout-card card">
               <div className="card-title-row">
                 <span className="step-num">2</span>
-                <h3>Payment Gateway (Test Mode)</h3>
+                <h3>Payment Method (Razorpay)</h3>
               </div>
 
               <div className="gateway-options">
-                <label className={`gateway-option ${paymentGateway === 'Razorpay' ? 'active' : ''}`}>
+                <label className="gateway-option active">
                   <input
                     type="radio"
                     name="gateway"
                     value="Razorpay"
-                    checked={paymentGateway === 'Razorpay'}
-                    onChange={() => setPaymentGateway('Razorpay')}
+                    checked={true}
+                    readOnly
                   />
                   <div className="gateway-meta">
-                    <strong>Razorpay Test Mode</strong>
-                    <span>Supports UPI, Cards, Netbanking with automated split</span>
+                    <strong>Razorpay Payment Gateway</strong>
+                    <span>Instant UPI (GPay, PhonePe, Paytm), Credit/Debit Cards, NetBanking</span>
                   </div>
-                  <span className="badge badge-success">Split Payout Ready</span>
-                </label>
-
-                <label className={`gateway-option ${paymentGateway === 'Stripe' ? 'active' : ''}`}>
-                  <input
-                    type="radio"
-                    name="gateway"
-                    value="Stripe"
-                    checked={paymentGateway === 'Stripe'}
-                    onChange={() => setPaymentGateway('Stripe')}
-                  />
-                  <div className="gateway-meta">
-                    <strong>Stripe Connect Test</strong>
-                    <span>Direct vendor account destination transfer</span>
-                  </div>
-                  <span className="badge badge-primary">Direct Connect</span>
+                  <span className="badge badge-success">Automated 10% Split</span>
                 </label>
               </div>
 
               <div className="security-note">
                 <Lock size={15} />
-                <span>Simulated test mode environment. No real funds will be charged.</span>
+                <span>256-Bit SSL Encrypted & Verified by Razorpay Secure Payments.</span>
               </div>
             </div>
           </div>
@@ -323,3 +308,4 @@ function CheckoutPage() {
 }
 
 export default CheckoutPage;
+

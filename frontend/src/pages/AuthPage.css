@@ -198,3 +198,4 @@
 .demo-btn.customer:hover { border-color: #0284c7; color: #0284c7; }
 .demo-btn.vendor:hover { border-color: var(--primary); color: var(--primary); }
 .demo-btn.admin:hover { border-color: #d97706; color: #d97706; }
+

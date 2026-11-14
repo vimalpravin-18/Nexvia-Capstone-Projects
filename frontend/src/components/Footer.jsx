@@ -23,8 +23,8 @@ function Footer() {
           <div className="feature-item">
             <ShieldCheck className="feature-icon" />
             <div>
-              <h4>Secure Test Payments</h4>
-              <p>Integrated with Razorpay & Stripe Connect</p>
+              <h4>Secure Payments</h4>
+              <p>Integrated with Razorpay Escrow & Split Payments</p>
             </div>
           </div>
           <div className="feature-item">
@@ -52,3 +52,4 @@ function Footer() {
 }
 
 export default Footer;
+

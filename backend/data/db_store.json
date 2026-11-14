@@ -61,7 +61,7 @@
       "brand": "Keychron",
       "stock": 20,
       "rating": 5,
-      "numReviews": 2,
+      "numReviews": 3,
       "images": [
         "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=700&q=80"
       ],
@@ -249,6 +249,15 @@
   ],
   "reviews": [
     {
+      "id": "rev_test_1794659513276",
+      "productId": "prod_6",
+      "userId": "usr_customer",
+      "userName": "John Doe",
+      "rating": 5,
+      "comment": "Super fast delivery and great quality!",
+      "createdAt": "2026-11-14T12:31:53.276Z"
+    },
+    {
       "id": "rev_test_1793863464766",
       "productId": "prod_6",
       "userId": "usr_customer",
@@ -294,6 +303,15 @@
         "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=700&q=80",
         "vendorId": "usr_vendor1",
         "vendorName": "TechWorld Official",
+        "qty": 1
+      },
+      {
+        "id": "prod_4",
+        "name": "Urban Oversized Heavyweight Cotton Hoodie",
+        "price": 2499,
+        "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=700&q=80",
+        "vendorId": "usr_vendor2",
+        "vendorName": "UrbanStyle Fashion",
         "qty": 1
       }
     ]

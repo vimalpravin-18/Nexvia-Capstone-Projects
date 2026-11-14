@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { Star, ShieldCheck, Truck, Store, ArrowLeft, ShoppingBag, Check } from 'lucide-react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import { Star, ShieldCheck, Truck, Store, ArrowLeft, ShoppingBag, Check, Zap, RotateCcw, Clock } from 'lucide-react';
 import { api } from '../services/api';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
@@ -10,6 +10,7 @@ function ProductDetailPage() {
   const { id } = useParams();
   const { addToCart } = useCart();
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -45,6 +46,12 @@ function ProductDetailPage() {
     addToCart(product, quantity);
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
+  };
+
+  const handleBuyNow = () => {
+    if (!product) return;
+    addToCart(product, quantity);
+    navigate('/checkout');
   };
 
   const handleReviewSubmit = async (e) => {
@@ -136,18 +143,22 @@ function ProductDetailPage() {
             </div>
 
             <div className="price-tag-box">
-              <div className="price-main">
-                <span className="currency">₹</span>
-                <span className="price-val">{Number(product.price).toLocaleString('en-IN')}</span>
+              <div className="price-row-top">
+                <div className="price-main">
+                  <span className="currency">₹</span>
+                  <span className="price-val">{Number(product.price).toLocaleString('en-IN')}</span>
+                </div>
+                <span className="original-mrp">MRP ₹{Math.round(Number(product.price) * 1.18).toLocaleString('en-IN')}</span>
+                <span className="discount-pill-detail">18% OFF</span>
               </div>
-              <span className="tax-inclusive">Inclusive of all taxes</span>
+              <span className="tax-inclusive">Inclusive of all GST & taxes • Free shipping included</span>
             </div>
 
             <p className="product-description">{product.description}</p>
 
             <div className="stock-status">
               {product.stock > 0 ? (
-                <span className="in-stock">● In Stock ({product.stock} units available)</span>
+                <span className="in-stock">● In Stock ({product.stock} units available at vendor warehouse)</span>
               ) : (
                 <span className="out-stock">● Currently Out of Stock</span>
               )}
@@ -186,6 +197,14 @@ function ProductDetailPage() {
                     <ShoppingBag size={18} /> Add to Cart
                   </>
                 )}
+              </button>
+
+              <button
+                className="btn btn-secondary btn-buy-now"
+                onClick={handleBuyNow}
+                disabled={product.stock <= 0}
+              >
+                <Zap size={18} /> Buy Now
               </button>
             </div>
 
@@ -295,3 +314,4 @@ function ProductDetailPage() {
 }
 
 export default ProductDetailPage;
+

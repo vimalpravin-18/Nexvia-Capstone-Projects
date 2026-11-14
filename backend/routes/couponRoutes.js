@@ -12,3 +12,4 @@ router.post('/validate', validateCoupon);
 router.post('/', protect, authorize('admin'), createCoupon);
 
 module.exports = router;
+

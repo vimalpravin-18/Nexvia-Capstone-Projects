@@ -15,3 +15,4 @@ router.get('/vendors', getVendorsList);
 router.put('/vendors/:id/toggle-status', toggleVendorStatus);
 
 module.exports = router;
+
