@@ -82,8 +82,17 @@ router.post('/', upload.single('image'), async (req, res) => {
         storageType: 's3'
       });
     } catch (err) {
-      console.error('AWS S3 Upload Error:', err.message);
-      return res.status(500).json({ message: `AWS S3 Upload failed: ${err.message}` });
+      console.warn('AWS S3 Upload permission notice:', err.message, 'Falling back to local disk storage.');
+      const localFilename = `prod_${Date.now()}_${path.basename(req.file.originalname)}`;
+      const localFilePath = path.join(uploadDir, localFilename);
+      fs.writeFileSync(localFilePath, req.file.buffer);
+
+      return res.json({
+        message: 'Image uploaded (saved locally due to S3 permission)',
+        url: `/uploads/${localFilename}`,
+        filename: localFilename,
+        storageType: 'local_fallback'
+      });
     }
   }
 
