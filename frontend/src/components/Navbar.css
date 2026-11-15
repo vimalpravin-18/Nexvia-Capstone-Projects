@@ -43,40 +43,44 @@
   color: #334155;
 }
 
-.role-switcher-wrap {
+.strip-right-links {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
 
-.switcher-label {
-  color: #64748b;
-  font-weight: 600;
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.role-pills-group {
-  display: flex;
-  align-items: center;
-  background: #171e2e;
-  padding: 2px;
-  border-radius: var(--radius-full);
-  border: 1px solid #273142;
-}
-
-.role-pill {
-  padding: 3px 12px;
-  border-radius: var(--radius-full);
-  font-size: 0.73rem;
-  font-weight: 700;
+.top-link {
   color: #94a3b8;
-  transition: all var(--transition-fast);
+  font-size: 0.76rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.15s ease;
 }
 
-.role-pill:hover {
+.top-link:hover {
   color: #ffffff;
+}
+
+.top-link.vendor-cta {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+.top-link.vendor-cta:hover {
+  background: rgba(56, 189, 248, 0.2);
+  color: #7dd3fc;
+}
+
+.guest-auth-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .role-pill.active.customer {

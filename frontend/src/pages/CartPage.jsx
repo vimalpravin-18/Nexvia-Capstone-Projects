@@ -1,17 +1,46 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Trash2, ShoppingBag, ArrowRight, Tag, CheckCircle2, AlertCircle } from 'lucide-react';
+import {
+  Trash2,
+  ShoppingBag,
+  ArrowRight,
+  Tag,
+  CheckCircle2,
+  AlertCircle,
+  ShieldCheck,
+  Zap,
+  Truck,
+  RotateCcw,
+  Sparkles,
+  Plus
+} from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { api } from '../services/api';
 import './CartPage.css';
 
 function CartPage() {
-  const { cartItems, updateQuantity, removeFromCart, cartSubtotal } = useCart();
+  const { cartItems, updateQuantity, removeFromCart, addToCart, cartSubtotal } = useCart();
   const [couponCode, setCouponCode] = useState('');
   const [appliedCoupon, setAppliedCoupon] = useState(null);
   const [couponError, setCouponError] = useState('');
   const [validating, setValidating] = useState(false);
+  const [recommendedProducts, setRecommendedProducts] = useState([]);
+  const [loadingRecommended, setLoadingRecommended] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (cartItems.length === 0) {
+      setLoadingRecommended(true);
+      api.getProducts({ limit: 4 })
+        .then(res => {
+          if (res && res.products) {
+            setRecommendedProducts(res.products.slice(0, 4));
+          }
+        })
+        .catch(() => {})
+        .finally(() => setLoadingRecommended(false));
+    }
+  }, [cartItems.length]);
 
   const handleApplyCoupon = async (e) => {
     e.preventDefault();
@@ -40,13 +69,108 @@ function CartPage() {
     return (
       <div className="cart-page">
         <div className="container">
-          <div className="empty-cart-card card">
-            <ShoppingBag size={56} className="empty-icon" />
+          {/* Main Empty State Banner */}
+          <div className="empty-cart-hero card">
+            <div className="empty-hero-visual">
+              <div className="empty-icon-ring">
+                <ShoppingBag size={48} className="empty-bag-icon" />
+              </div>
+              <span className="empty-sparkle-pill">
+                <Sparkles size={14} /> Ready for your next discovery
+              </span>
+            </div>
+
             <h2>Your Shopping Cart is Empty</h2>
-            <p>Looks like you haven't added any products to your cart yet.</p>
-            <Link to="/catalog" className="btn btn-primary">
-              Discover Products
-            </Link>
+            <p className="empty-hero-description">
+              Looks like you haven't added anything to your cart yet, or your recent order has been confirmed!
+              Browse verified multi-vendor products with genuine warranties and instant Razorpay checkout.
+            </p>
+
+            <div className="empty-cart-actions">
+              <Link to="/catalog" className="btn btn-primary btn-lg">
+                <Zap size={18} /> Explore Marketplace
+              </Link>
+              <Link to="/orders" className="btn btn-secondary btn-lg">
+                View Past Orders <ArrowRight size={16} />
+              </Link>
+            </div>
+
+            {/* Popular Categories Shortcut */}
+            <div className="empty-category-chips">
+              <span className="chips-label">Quick Search:</span>
+              <Link to="/catalog?category=Electronics" className="chip">Electronics</Link>
+              <Link to="/catalog?category=Audio" className="chip">Audio & Headphones</Link>
+              <Link to="/catalog?category=Wearables" className="chip">Wearables</Link>
+              <Link to="/catalog?category=Computers" className="chip">Laptops & PCs</Link>
+            </div>
+          </div>
+
+          {/* Recommended Products Carousel / Grid */}
+          {recommendedProducts.length > 0 && (
+            <div className="empty-recommended-section">
+              <div className="section-title-wrap">
+                <div>
+                  <h3 className="section-title">Trending Marketplace Picks</h3>
+                  <p className="section-subtitle">Handpicked top-rated products from verified vendors</p>
+                </div>
+                <Link to="/catalog" className="see-all-link">
+                  View Full Catalog <ArrowRight size={14} />
+                </Link>
+              </div>
+
+              <div className="empty-products-grid">
+                {recommendedProducts.map((prod) => (
+                  <div key={prod.id} className="recommended-product-card card">
+                    <div className="prod-img-wrap">
+                      <img src={prod.images?.[0] || prod.url} alt={prod.name} />
+                      <span className="vendor-pill">{prod.vendorName || 'Verified'}</span>
+                    </div>
+
+                    <div className="prod-details">
+                      <span className="prod-category">{prod.category}</span>
+                      <h4 className="prod-name" title={prod.name}>
+                        <Link to={`/products/${prod.id}`}>{prod.name}</Link>
+                      </h4>
+                      <div className="prod-footer">
+                        <span className="prod-price">₹{Number(prod.price).toLocaleString('en-IN')}</span>
+                        <button
+                          onClick={() => addToCart(prod, 1)}
+                          className="btn btn-secondary btn-sm btn-quick-add"
+                          title="Add to Cart"
+                        >
+                          <Plus size={15} /> Add
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Marketplace Buyer Guarantees */}
+          <div className="cart-guarantees-grid">
+            <div className="guarantee-box card">
+              <Truck size={24} className="guarantee-icon" />
+              <div>
+                <h4>Express Multi-Vendor Dispatch</h4>
+                <p>Direct priority delivery across 19,000+ pin codes in India.</p>
+              </div>
+            </div>
+            <div className="guarantee-box card">
+              <ShieldCheck size={24} className="guarantee-icon" />
+              <div>
+                <h4>100% Genuine Buyer Protection</h4>
+                <p>Every seller is KYC-verified with guaranteed original products.</p>
+              </div>
+            </div>
+            <div className="guarantee-box card">
+              <RotateCcw size={24} className="guarantee-icon" />
+              <div>
+                <h4>7-Day Easy Replacement</h4>
+                <p>Simple no-questions replacement for transit damage or defects.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

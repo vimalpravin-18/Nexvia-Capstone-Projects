@@ -10,36 +10,19 @@ const protect = (req, res, next) => {
   }
 
   if (!token) {
-    // Graceful demo/guest fallback: attach default customer account
-    const demoCustomer = store.findUserById('usr_customer');
-    if (demoCustomer) {
-      req.user = demoCustomer;
-      return next();
-    }
-    return res.status(401).json({ message: 'Not authorized, token missing' });
+    return res.status(401).json({ message: 'Authentication required. Token missing.' });
   }
 
   try {
     const decoded = jwt.verify(token, JWT_SECRET);
     const user = store.findUserById(decoded.id) || (decoded.email ? store.findUserByEmail(decoded.email) : null);
     if (!user) {
-      const demoCustomer = store.findUserById('usr_customer');
-      if (demoCustomer) {
-        req.user = demoCustomer;
-        return next();
-      }
-      return res.status(401).json({ message: 'User belonging to token not found' });
+      return res.status(401).json({ message: 'User belonging to this token does not exist.' });
     }
     req.user = user;
     next();
   } catch (error) {
-    // If token invalid/expired, fall back to demo customer account
-    const demoCustomer = store.findUserById('usr_customer');
-    if (demoCustomer) {
-      req.user = demoCustomer;
-      return next();
-    }
-    return res.status(401).json({ message: 'Not authorized, token invalid or expired' });
+    return res.status(401).json({ message: 'Invalid or expired authentication token. Please sign in again.' });
   }
 };
 
@@ -47,7 +30,7 @@ const authorize = (...roles) => {
   return (req, res, next) => {
     if (!req.user || !roles.includes(req.user.role)) {
       return res.status(403).json({
-        message: `Forbidden: role ${req.user ? req.user.role : 'guest'} does not have access`
+        message: `Forbidden: role ${req.user ? req.user.role : 'guest'} does not have access to this resource`
       });
     }
     next();

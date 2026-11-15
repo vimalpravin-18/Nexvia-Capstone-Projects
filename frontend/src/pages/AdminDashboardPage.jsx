@@ -7,6 +7,12 @@ function AdminDashboardPage() {
   const [analytics, setAnalytics] = useState(null);
   const [vendors, setVendors] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [notice, setNotice] = useState(null);
+
+  const showNotice = (type, message) => {
+    setNotice({ type, message });
+    setTimeout(() => setNotice(null), 3500);
+  };
 
   const loadAdminData = async () => {
     try {
@@ -29,9 +35,10 @@ function AdminDashboardPage() {
   const handleToggleVendor = async (vendorId) => {
     try {
       await api.toggleVendorStatus(vendorId);
+      showNotice('success', 'Vendor verification status updated successfully');
       loadAdminData();
     } catch (err) {
-      alert(err.message || 'Failed to update vendor status');
+      showNotice('error', err.message || 'Failed to update vendor status');
     }
   };
 
@@ -46,6 +53,12 @@ function AdminDashboardPage() {
   return (
     <div className="admin-dashboard-page">
       <div className="container">
+        {notice && (
+          <div className={`vendor-notice-toast ${notice.type}`} style={{ marginBottom: 20 }}>
+            <span>{notice.message}</span>
+            <button onClick={() => setNotice(null)} className="notice-close">✕</button>
+          </div>
+        )}
         <div className="admin-header">
           <div className="admin-title-row">
             <ShieldCheck size={28} className="admin-icon" />

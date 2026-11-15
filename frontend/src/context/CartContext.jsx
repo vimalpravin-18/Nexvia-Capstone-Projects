@@ -58,7 +58,9 @@ export const CartProvider = ({ children }) => {
   const clearCart = () => {
     setCartItems([]);
     localStorage.removeItem('cart');
-    api.clearCart().catch(() => {});
+    if (api && typeof api.clearCart === 'function') {
+      api.clearCart().catch(() => {});
+    }
   };
 
   const cartCount = cartItems.reduce((sum, item) => sum + (item.qty || 1), 0);

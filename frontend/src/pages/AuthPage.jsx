@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { Store, User, ShieldCheck, ArrowRight, Lock, Mail } from 'lucide-react';
+import { Store, User, ShieldCheck, ArrowRight, Lock, Mail, Info, KeyRound } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import './AuthPage.css';
 
@@ -8,6 +8,7 @@ function AuthPage() {
   const [searchParams] = useSearchParams();
   const defaultMode = searchParams.get('mode') === 'vendor' ? 'register' : 'login';
   const defaultRole = searchParams.get('mode') === 'vendor' ? 'vendor' : 'customer';
+  const redirectPath = searchParams.get('redirect') || '';
 
   const [isLogin, setIsLogin] = useState(defaultMode === 'login');
   const [role, setRole] = useState(defaultRole);
@@ -19,7 +20,7 @@ function AuthPage() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const { login, register, quickSwitch } = useAuth();
+  const { login, register } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -28,10 +29,11 @@ function AuthPage() {
     setLoading(true);
 
     try {
+      let loggedUser;
       if (isLogin) {
-        await login(email, password);
+        loggedUser = await login(email, password);
       } else {
-        await register({
+        loggedUser = await register({
           name,
           email,
           password,
@@ -41,27 +43,27 @@ function AuthPage() {
         });
       }
 
-      if (role === 'vendor') {
+      if (redirectPath) {
+        navigate(redirectPath);
+      } else if (loggedUser.role === 'vendor') {
         navigate('/vendor/dashboard');
+      } else if (loggedUser.role === 'admin') {
+        navigate('/admin/dashboard');
       } else {
         navigate('/catalog');
       }
     } catch (err) {
-      setError(err.message || 'Authentication failed');
+      setError(err.message || 'Authentication failed. Please verify credentials.');
     } finally {
       setLoading(false);
     }
   };
 
-  const handleDemoLogin = (demoRole) => {
-    quickSwitch(demoRole);
-    if (demoRole === 'vendor') {
-      navigate('/vendor/dashboard');
-    } else if (demoRole === 'admin') {
-      navigate('/admin/dashboard');
-    } else {
-      navigate('/catalog');
-    }
+  const handleFillCredentials = (demoEmail, demoRole) => {
+    setIsLogin(true);
+    setEmail(demoEmail);
+    setPassword('password123');
+    setError('');
   };
 
   return (
@@ -72,11 +74,11 @@ function AuthPage() {
             <div className="auth-icon-badge">
               <Store size={26} color="#ffffff" />
             </div>
-            <h2>{isLogin ? 'Welcome Back to Nexvia' : 'Create an Account'}</h2>
+            <h2>{isLogin ? 'Sign In to Nexvia' : 'Create an Account'}</h2>
             <p>
               {isLogin
-                ? 'Sign in to access your orders or seller dashboard'
-                : 'Join the multi-vendor marketplace as buyer or independent vendor'}
+                ? 'Enter your verified account credentials to access your dashboard'
+                : 'Join the multi-vendor marketplace as a buyer or registered vendor'}
             </p>
           </div>
 
@@ -126,7 +128,7 @@ function AuthPage() {
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    placeholder="e.g. John Doe"
+                    placeholder="e.g. Alex Morgan"
                     required
                   />
                 </div>
@@ -139,7 +141,7 @@ function AuthPage() {
                         type="text"
                         value={storeName}
                         onChange={(e) => setStoreName(e.target.value)}
-                        placeholder="e.g. Prime Electronics"
+                        placeholder="e.g. Apex Tech & Audio"
                         required
                       />
                     </div>
@@ -149,7 +151,7 @@ function AuthPage() {
                         type="text"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
-                        placeholder="Speciality category or items sold..."
+                        placeholder="Speciality category or product line..."
                       />
                     </div>
                   </>
@@ -186,36 +188,43 @@ function AuthPage() {
             </div>
 
             <button type="submit" className="btn btn-primary auth-submit-btn" disabled={loading}>
-              {loading ? 'Please wait...' : isLogin ? 'Sign In' : 'Create Account'}
+              {loading ? 'Authenticating with JWT...' : isLogin ? 'Sign In' : 'Create Account'}
             </button>
           </form>
 
-          {/* Quick Demo Accounts for Fast Evaluation */}
+          {/* Quick Credential Helper for Evaluators */}
           <div className="demo-accounts-strip">
-            <span className="demo-label">1-Click Demo Evaluation Sign In:</span>
+            <div className="demo-header-row">
+              <KeyRound size={14} className="key-icon" />
+              <span className="demo-label">Evaluation Credentials (Click to pre-fill form):</span>
+            </div>
             <div className="demo-buttons">
               <button
                 type="button"
-                onClick={() => handleDemoLogin('customer')}
+                onClick={() => handleFillCredentials('customer@nexvia.com', 'customer')}
                 className="demo-btn customer"
+                title="Fill Customer login credentials"
               >
-                <User size={13} /> Customer
+                <User size={13} /> Customer (customer@nexvia.com)
               </button>
               <button
                 type="button"
-                onClick={() => handleDemoLogin('vendor')}
+                onClick={() => handleFillCredentials('vendor1@nexvia.com', 'vendor')}
                 className="demo-btn vendor"
+                title="Fill Vendor login credentials"
               >
-                <Store size={13} /> Vendor (TechWorld)
+                <Store size={13} /> Vendor (vendor1@nexvia.com)
               </button>
               <button
                 type="button"
-                onClick={() => handleDemoLogin('admin')}
+                onClick={() => handleFillCredentials('admin@nexvia.com', 'admin')}
                 className="demo-btn admin"
+                title="Fill Admin login credentials"
               >
-                <ShieldCheck size={13} /> Admin
+                <ShieldCheck size={13} /> Admin (admin@nexvia.com)
               </button>
             </div>
+            <small className="demo-note">Password for all test accounts: <code>password123</code></small>
           </div>
         </div>
       </div>
@@ -224,4 +233,3 @@ function AuthPage() {
 }
 
 export default AuthPage;
-

@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { ShoppingBag, Search, Store, ShieldCheck, User, LogOut, Package, Sparkles, ChevronRight, Zap } from 'lucide-react';
+import { ShoppingBag, Search, Store, ShieldCheck, User, LogOut, Package, Sparkles, HelpCircle, ArrowRight } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 import './Navbar.css';
 
 function Navbar() {
   const [searchTerm, setSearchTerm] = useState('');
-  const { user, logout, quickSwitch } = useAuth();
+  const { user, logout } = useAuth();
   const { cartCount } = useCart();
   const navigate = useNavigate();
   const location = useLocation();
@@ -25,42 +25,26 @@ function Navbar() {
 
   return (
     <header className="navbar-header">
-      {/* Top Banner & Multi-Vendor Role Switcher */}
+      {/* Enterprise Top Announcement Bar */}
       <div className="navbar-top-strip">
         <div className="container top-strip-inner">
           <div className="strip-left">
-            <span className="strip-highlight">
-              <Zap size={13} fill="#38bdf8" color="#38bdf8" /> NEXT-GEN MULTI-VENDOR COMMERCE
-            </span>
+            <span className="strip-highlight">NEXVIA GLOBAL COMMERCE</span>
             <span className="dot">•</span>
-            <span>Automated 10% Platform Split & Direct Vendor Payouts</span>
+            <span>Free Express Shipping on Orders Over ₹999</span>
+            <span className="dot">•</span>
+            <span>Verified Multi-Vendor Sellers</span>
           </div>
 
-          <div className="role-switcher-wrap">
-            <span className="switcher-label">Simulate Role:</span>
-            <div className="role-pills-group">
-              <button
-                className={`role-pill ${user?.role === 'customer' ? 'active customer' : ''}`}
-                onClick={() => quickSwitch('customer')}
-                title="Switch to Customer account (John Doe)"
-              >
-                Customer
-              </button>
-              <button
-                className={`role-pill ${user?.role === 'vendor' ? 'active vendor' : ''}`}
-                onClick={() => quickSwitch('vendor')}
-                title="Switch to Vendor account (TechWorld Official)"
-              >
-                Vendor
-              </button>
-              <button
-                className={`role-pill ${user?.role === 'admin' ? 'active admin' : ''}`}
-                onClick={() => quickSwitch('admin')}
-                title="Switch to Platform Admin account"
-              >
-                Admin
-              </button>
-            </div>
+          <div className="strip-right-links">
+            {(!user || user.role === 'customer') && (
+              <Link to="/auth?mode=vendor" className="top-link vendor-cta">
+                <Store size={13} />
+                <span>Sell on Nexvia</span>
+              </Link>
+            )}
+            <span className="dot">•</span>
+            <span className="top-link">INR (₹)</span>
           </div>
         </div>
       </div>
@@ -100,10 +84,12 @@ function Navbar() {
               Explore
             </Link>
 
-            <Link to="/orders" className={`nav-link ${location.pathname === '/orders' ? 'active' : ''}`}>
-              <Package size={17} />
-              <span>Orders</span>
-            </Link>
+            {user && (
+              <Link to="/orders" className={`nav-link ${location.pathname === '/orders' ? 'active' : ''}`}>
+                <Package size={17} />
+                <span>Orders</span>
+              </Link>
+            )}
 
             {user?.role === 'vendor' && (
               <Link to="/vendor/dashboard" className="nav-link portal-link vendor">
@@ -132,7 +118,9 @@ function Navbar() {
                   </div>
                   <div className="user-text-info">
                     <span className="user-name">{user.name.split(' ')[0]}</span>
-                    <span className={`user-role-badge ${user.role}`}>{user.role}</span>
+                    <span className={`user-role-badge ${user.role}`}>
+                      {user.role === 'admin' ? 'Administrator' : user.role === 'vendor' ? 'Verified Seller' : 'Customer'}
+                    </span>
                   </div>
                 </div>
                 <button onClick={logout} className="logout-btn" title="Sign Out">
@@ -140,9 +128,11 @@ function Navbar() {
                 </button>
               </div>
             ) : (
-              <Link to="/auth" className="btn btn-primary btn-sm">
-                Sign In
-              </Link>
+              <div className="guest-auth-actions">
+                <Link to="/auth" className="btn btn-primary btn-sm">
+                  Sign In
+                </Link>
+              </div>
             )}
           </nav>
         </div>
@@ -167,7 +157,7 @@ function Navbar() {
             ))}
           </div>
           <div className="subnav-right-badge">
-            <span className="badge badge-success">Razorpay Split Payments Verified</span>
+            <span className="badge badge-success">Automated 10% Split • Razorpay Verified</span>
           </div>
         </div>
       </div>

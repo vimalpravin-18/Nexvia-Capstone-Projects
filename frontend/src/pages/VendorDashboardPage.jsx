@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Plus, Store, DollarSign, Package, TrendingUp, Edit, Trash2, CheckCircle, Upload, Eye } from 'lucide-react';
+import { Plus, Store, DollarSign, Package, TrendingUp, Edit, Trash2, CheckCircle, Upload, Eye, AlertTriangle, CheckCircle2 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { api } from '../services/api';
 import './VendorDashboardPage.css';
@@ -10,6 +10,12 @@ function VendorDashboardPage() {
   const [vendorOrders, setVendorOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('products');
+  const [notice, setNotice] = useState(null);
+
+  const showNotice = (type, message) => {
+    setNotice({ type, message });
+    setTimeout(() => setNotice(null), 3500);
+  };
 
   // Modal / Form state for Add / Edit Product
   const [showProductModal, setShowProductModal] = useState(false);
@@ -33,8 +39,9 @@ function VendorDashboardPage() {
     try {
       const res = await api.uploadImage(file);
       setFormData(prev => ({ ...prev, imageUrl: res.url }));
+      showNotice('success', 'Image uploaded successfully');
     } catch (err) {
-      alert(err.message || 'Image upload failed');
+      showNotice('error', err.message || 'Image upload failed');
     } finally {
       setUploadingImage(false);
     }
@@ -98,9 +105,10 @@ function VendorDashboardPage() {
     if (!window.confirm('Are you sure you want to delete this product?')) return;
     try {
       await api.deleteProduct(id);
+      showNotice('success', 'Product deleted successfully');
       loadData();
     } catch (err) {
-      alert(err.message || 'Failed to delete');
+      showNotice('error', err.message || 'Failed to delete product');
     }
   };
 
@@ -122,14 +130,16 @@ function VendorDashboardPage() {
 
       if (editingProduct) {
         await api.updateProduct(editingProduct.id, payload);
+        showNotice('success', 'Product updated successfully');
       } else {
         await api.createProduct(payload);
+        showNotice('success', 'New product published successfully');
       }
 
       setShowProductModal(false);
       loadData();
     } catch (err) {
-      alert(err.message || 'Failed to save product');
+      showNotice('error', err.message || 'Failed to save product');
     } finally {
       setSavingProduct(false);
     }
@@ -138,15 +148,24 @@ function VendorDashboardPage() {
   const handleStatusChange = async (orderId, newStatus) => {
     try {
       await api.updateOrderStatus(orderId, newStatus, `Status updated to ${newStatus} by vendor`);
+      showNotice('success', `Order status updated to ${newStatus}`);
       loadData();
     } catch (err) {
-      alert(err.message || 'Failed to update order status');
+      showNotice('error', err.message || 'Failed to update order status');
     }
   };
 
   return (
     <div className="vendor-dashboard-page">
       <div className="container">
+        {notice && (
+          <div className={`vendor-notice-toast ${notice.type}`}>
+            {notice.type === 'error' ? <AlertTriangle size={18} /> : <CheckCircle2 size={18} />}
+            <span>{notice.message}</span>
+            <button onClick={() => setNotice(null)} className="notice-close">✕</button>
+          </div>
+        )}
+
         {/* Header & Metrics */}
         <div className="vendor-header">
           <div>

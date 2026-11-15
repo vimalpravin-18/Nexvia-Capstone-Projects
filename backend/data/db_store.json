@@ -19,8 +19,8 @@
         "storeName": "TechWorld Official",
         "description": "Premium gadgets, smartphones, and audio gear.",
         "commissionRate": 10,
-        "balance": 41191,
-        "totalSales": 49,
+        "balance": 568848,
+        "totalSales": 57,
         "status": "approved"
       },
       "createdAt": "2026-10-25T04:27:59.711Z"
@@ -35,8 +35,8 @@
         "storeName": "UrbanStyle Fashion",
         "description": "Trendy street wear and luxury footwear.",
         "commissionRate": 12,
-        "balance": 8900,
-        "totalSales": 27,
+        "balance": 22094,
+        "totalSales": 30,
         "status": "approved"
       },
       "createdAt": "2026-10-25T04:27:59.711Z"
@@ -61,7 +61,7 @@
       "brand": "Keychron",
       "stock": 20,
       "rating": 5,
-      "numReviews": 2,
+      "numReviews": 4,
       "images": [
         "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=700&q=80"
       ],
@@ -186,6 +186,517 @@
   ],
   "orders": [
     {
+      "id": "ord_1794666547474",
+      "customer": {
+        "id": "usr_customer",
+        "name": "John Doe",
+        "email": "customer@nexvia.com"
+      },
+      "items": [
+        {
+          "productId": "prod_1",
+          "name": "Apple iPhone 16 Pro Max (256GB, Desert Titanium)",
+          "price": 134900,
+          "qty": 2,
+          "vendorId": "usr_vendor1",
+          "vendorName": "TechWorld Official",
+          "image": "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=700&q=80"
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "John Doe",
+        "phone": "+91 9876543210",
+        "street": "142 Innovation Park, 4th Avenue",
+        "city": "Bengaluru",
+        "state": "Karnataka",
+        "pincode": "560001"
+      },
+      "paymentMethod": "Razorpay",
+      "paymentStatus": "paid",
+      "totalAmount": 269800,
+      "discountAmount": 0,
+      "couponCode": null,
+      "finalAmount": 269800,
+      "platformCommissionTotal": 26980,
+      "vendorPayouts": [
+        {
+          "vendorId": "usr_vendor1",
+          "vendorName": "TechWorld Official",
+          "subtotal": 269800,
+          "commissionFee": 26980,
+          "payoutAmount": 242820,
+          "status": "allocated"
+        }
+      ],
+      "orderStatus": "placed",
+      "timeline": [
+        {
+          "status": "placed",
+          "timestamp": "2026-11-14T14:29:07.474Z",
+          "note": "Order received and confirmed via Razorpay"
+        }
+      ],
+      "createdAt": "2026-11-14T14:29:07.474Z"
+    },
+    {
+      "id": "ord_1794666500496",
+      "customer": {
+        "id": "usr_customer",
+        "name": "John Doe",
+        "email": "customer@nexvia.com"
+      },
+      "items": [
+        {
+          "productId": "prod_6",
+          "name": "Keychron K2 Pro Wireless Mechanical Keyboard",
+          "price": 8499,
+          "qty": 1,
+          "vendorId": "usr_vendor1",
+          "vendorName": "TechWorld Official",
+          "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=700&q=80"
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "John Doe",
+        "phone": "+91 9876543210",
+        "street": "142 Innovation Park, 4th Avenue",
+        "city": "Bengaluru",
+        "state": "Karnataka",
+        "pincode": "560001"
+      },
+      "paymentMethod": "Razorpay",
+      "paymentStatus": "paid",
+      "totalAmount": 8499,
+      "discountAmount": 0,
+      "couponCode": null,
+      "finalAmount": 8499,
+      "platformCommissionTotal": 850,
+      "vendorPayouts": [
+        {
+          "vendorId": "usr_vendor1",
+          "vendorName": "TechWorld Official",
+          "subtotal": 8499,
+          "commissionFee": 850,
+          "payoutAmount": 7649,
+          "status": "allocated"
+        }
+      ],
+      "orderStatus": "placed",
+      "timeline": [
+        {
+          "status": "placed",
+          "timestamp": "2026-11-14T14:28:20.496Z",
+          "note": "Order received and confirmed via Razorpay"
+        }
+      ],
+      "createdAt": "2026-11-14T14:28:20.496Z"
+    },
+    {
+      "id": "ord_1794665859246",
+      "customer": {
+        "id": "usr_customer",
+        "name": "John Doe",
+        "email": "customer@nexvia.com"
+      },
+      "items": [
+        {
+          "productId": "prod_4",
+          "name": "Urban Oversized Heavyweight Cotton Hoodie",
+          "price": 2499,
+          "qty": 2,
+          "vendorId": "usr_vendor2",
+          "vendorName": "UrbanStyle Fashion",
+          "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=700&q=80"
+        },
+        {
+          "productId": "prod_3",
+          "name": "Samsung Galaxy Watch Ultra 47mm LTE",
+          "price": 59999,
+          "qty": 1,
+          "vendorId": "usr_vendor1",
+          "vendorName": "TechWorld Official",
+          "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=700&q=80"
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "John Doe",
+        "phone": "+91 9876543210",
+        "street": "142 Innovation Park, 4th Avenue",
+        "city": "Bengaluru",
+        "state": "Karnataka",
+        "pincode": "560001"
+      },
+      "paymentMethod": "Razorpay",
+      "paymentStatus": "paid",
+      "totalAmount": 64997,
+      "discountAmount": 0,
+      "couponCode": null,
+      "finalAmount": 64997,
+      "platformCommissionTotal": 6600,
+      "vendorPayouts": [
+        {
+          "vendorId": "usr_vendor2",
+          "vendorName": "UrbanStyle Fashion",
+          "subtotal": 4998,
+          "commissionFee": 600,
+          "payoutAmount": 4398,
+          "status": "allocated"
+        },
+        {
+          "vendorId": "usr_vendor1",
+          "vendorName": "TechWorld Official",
+          "subtotal": 59999,
+          "commissionFee": 6000,
+          "payoutAmount": 53999,
+          "status": "allocated"
+        }
+      ],
+      "orderStatus": "placed",
+      "timeline": [
+        {
+          "status": "placed",
+          "timestamp": "2026-11-14T14:17:39.246Z",
+          "note": "Order received and confirmed via Razorpay"
+        }
+      ],
+      "createdAt": "2026-11-14T14:17:39.246Z"
+    },
+    {
+      "id": "ord_1794665765029",
+      "customer": {
+        "id": "usr_customer",
+        "name": "John Doe",
+        "email": "customer@nexvia.com"
+      },
+      "items": [
+        {
+          "productId": "prod_6",
+          "name": "Keychron K2 Pro Wireless Mechanical Keyboard",
+          "price": 8499,
+          "qty": 2,
+          "vendorId": "usr_vendor1",
+          "vendorName": "TechWorld Official",
+          "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=700&q=80"
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "John Doe",
+        "phone": "+91 9876543210",
+        "street": "142 Innovation Park, 4th Avenue",
+        "city": "Bengaluru",
+        "state": "Karnataka",
+        "pincode": "560001"
+      },
+      "paymentMethod": "Razorpay",
+      "paymentStatus": "paid",
+      "totalAmount": 16998,
+      "discountAmount": 0,
+      "couponCode": null,
+      "finalAmount": 16998,
+      "platformCommissionTotal": 1700,
+      "vendorPayouts": [
+        {
+          "vendorId": "usr_vendor1",
+          "vendorName": "TechWorld Official",
+          "subtotal": 16998,
+          "commissionFee": 1700,
+          "payoutAmount": 15298,
+          "status": "allocated"
+        }
+      ],
+      "orderStatus": "placed",
+      "timeline": [
+        {
+          "status": "placed",
+          "timestamp": "2026-11-14T14:16:05.029Z",
+          "note": "Order received and confirmed via Razorpay"
+        }
+      ],
+      "createdAt": "2026-11-14T14:16:05.029Z"
+    },
+    {
+      "id": "ord_1794664979083",
+      "customer": {
+        "id": "usr_customer",
+        "name": "John Doe",
+        "email": "customer@nexvia.com"
+      },
+      "items": [
+        {
+          "productId": "prod_6",
+          "name": "Keychron K2 Pro Wireless Mechanical Keyboard",
+          "price": 8499,
+          "qty": 2,
+          "vendorId": "usr_vendor1",
+          "vendorName": "TechWorld Official",
+          "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=700&q=80"
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "John Doe",
+        "phone": "+91 9876543210",
+        "street": "142 Innovation Park, 4th Avenue",
+        "city": "Bengaluru",
+        "state": "Karnataka",
+        "pincode": "560001"
+      },
+      "paymentMethod": "Razorpay",
+      "paymentStatus": "paid",
+      "totalAmount": 16998,
+      "discountAmount": 0,
+      "couponCode": null,
+      "finalAmount": 16998,
+      "platformCommissionTotal": 1700,
+      "vendorPayouts": [
+        {
+          "vendorId": "usr_vendor1",
+          "vendorName": "TechWorld Official",
+          "subtotal": 16998,
+          "commissionFee": 1700,
+          "payoutAmount": 15298,
+          "status": "allocated"
+        }
+      ],
+      "orderStatus": "placed",
+      "timeline": [
+        {
+          "status": "placed",
+          "timestamp": "2026-11-14T14:02:59.083Z",
+          "note": "Order received and confirmed via Razorpay"
+        }
+      ],
+      "createdAt": "2026-11-14T14:02:59.083Z"
+    },
+    {
+      "id": "ord_1794664433274",
+      "customer": {
+        "id": "usr_customer",
+        "name": "John Doe",
+        "email": "customer@nexvia.com"
+      },
+      "items": [
+        {
+          "productId": "prod_3",
+          "name": "Samsung Galaxy Watch Ultra 47mm LTE",
+          "price": 59999,
+          "qty": 3,
+          "vendorId": "usr_vendor1",
+          "vendorName": "TechWorld Official",
+          "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=700&q=80"
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "John Doe",
+        "phone": "+91 9876543210",
+        "street": "142 Innovation Park, 4th Avenue",
+        "city": "Bengaluru",
+        "state": "Karnataka",
+        "pincode": "560001"
+      },
+      "paymentMethod": "Razorpay",
+      "paymentStatus": "paid",
+      "totalAmount": 179997,
+      "discountAmount": 0,
+      "couponCode": null,
+      "finalAmount": 179997,
+      "platformCommissionTotal": 18000,
+      "vendorPayouts": [
+        {
+          "vendorId": "usr_vendor1",
+          "vendorName": "TechWorld Official",
+          "subtotal": 179997,
+          "commissionFee": 18000,
+          "payoutAmount": 161997,
+          "status": "allocated"
+        }
+      ],
+      "orderStatus": "placed",
+      "timeline": [
+        {
+          "status": "placed",
+          "timestamp": "2026-11-14T13:53:53.274Z",
+          "note": "Order received and confirmed via Razorpay"
+        }
+      ],
+      "createdAt": "2026-11-14T13:53:53.274Z"
+    },
+    {
+      "id": "ord_1794664405243",
+      "customer": {
+        "id": "usr_customer",
+        "name": "John Doe",
+        "email": "customer@nexvia.com"
+      },
+      "items": [
+        {
+          "productId": "prod_4",
+          "name": "Urban Oversized Heavyweight Cotton Hoodie",
+          "price": 2499,
+          "qty": 3,
+          "vendorId": "usr_vendor2",
+          "vendorName": "UrbanStyle Fashion",
+          "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=700&q=80"
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "John Doe",
+        "phone": "+91 9876543210",
+        "street": "142 Innovation Park, 4th Avenue",
+        "city": "Bengaluru",
+        "state": "Karnataka",
+        "pincode": "560001"
+      },
+      "paymentMethod": "Razorpay",
+      "paymentStatus": "paid",
+      "totalAmount": 7497,
+      "discountAmount": 0,
+      "couponCode": null,
+      "finalAmount": 7497,
+      "platformCommissionTotal": 900,
+      "vendorPayouts": [
+        {
+          "vendorId": "usr_vendor2",
+          "vendorName": "UrbanStyle Fashion",
+          "subtotal": 7497,
+          "commissionFee": 900,
+          "payoutAmount": 6597,
+          "status": "allocated"
+        }
+      ],
+      "orderStatus": "placed",
+      "timeline": [
+        {
+          "status": "placed",
+          "timestamp": "2026-11-14T13:53:25.244Z",
+          "note": "Order received and confirmed via Razorpay"
+        }
+      ],
+      "createdAt": "2026-11-14T13:53:25.244Z"
+    },
+    {
+      "id": "ord_1794664368493",
+      "customer": {
+        "id": "usr_customer",
+        "name": "John Doe",
+        "email": "customer@nexvia.com"
+      },
+      "items": [
+        {
+          "productId": "prod_6",
+          "name": "Keychron K2 Pro Wireless Mechanical Keyboard",
+          "price": 8499,
+          "qty": 1,
+          "vendorId": "usr_vendor1",
+          "vendorName": "TechWorld Official",
+          "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=700&q=80"
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "John Doe",
+        "phone": "+91 9876543210",
+        "street": "142 Innovation Park, 4th Avenue",
+        "city": "Bengaluru",
+        "state": "Karnataka",
+        "pincode": "560001"
+      },
+      "paymentMethod": "Razorpay",
+      "paymentStatus": "paid",
+      "totalAmount": 8499,
+      "discountAmount": 0,
+      "couponCode": null,
+      "finalAmount": 8499,
+      "platformCommissionTotal": 850,
+      "vendorPayouts": [
+        {
+          "vendorId": "usr_vendor1",
+          "vendorName": "TechWorld Official",
+          "subtotal": 8499,
+          "commissionFee": 850,
+          "payoutAmount": 7649,
+          "status": "allocated"
+        }
+      ],
+      "orderStatus": "placed",
+      "timeline": [
+        {
+          "status": "placed",
+          "timestamp": "2026-11-14T13:52:48.493Z",
+          "note": "Order received and confirmed via Razorpay"
+        }
+      ],
+      "createdAt": "2026-11-14T13:52:48.493Z"
+    },
+    {
+      "id": "ord_1794664343928",
+      "customer": {
+        "id": "usr_customer",
+        "name": "John Doe",
+        "email": "customer@nexvia.com"
+      },
+      "items": [
+        {
+          "productId": "prod_6",
+          "name": "Keychron K2 Pro Wireless Mechanical Keyboard",
+          "price": 8499,
+          "qty": 3,
+          "vendorId": "usr_vendor1",
+          "vendorName": "TechWorld Official",
+          "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=700&q=80"
+        },
+        {
+          "productId": "prod_4",
+          "name": "Urban Oversized Heavyweight Cotton Hoodie",
+          "price": 2499,
+          "qty": 1,
+          "vendorId": "usr_vendor2",
+          "vendorName": "UrbanStyle Fashion",
+          "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=700&q=80"
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "John Doe",
+        "phone": "+91 9876543210",
+        "street": "142 Innovation Park, 4th Avenue",
+        "city": "Bengaluru",
+        "state": "Karnataka",
+        "pincode": "560001"
+      },
+      "paymentMethod": "Razorpay",
+      "paymentStatus": "paid",
+      "totalAmount": 27996,
+      "discountAmount": 0,
+      "couponCode": null,
+      "finalAmount": 27996,
+      "platformCommissionTotal": 2850,
+      "vendorPayouts": [
+        {
+          "vendorId": "usr_vendor1",
+          "vendorName": "TechWorld Official",
+          "subtotal": 25497,
+          "commissionFee": 2550,
+          "payoutAmount": 22947,
+          "status": "allocated"
+        },
+        {
+          "vendorId": "usr_vendor2",
+          "vendorName": "UrbanStyle Fashion",
+          "subtotal": 2499,
+          "commissionFee": 300,
+          "payoutAmount": 2199,
+          "status": "allocated"
+        }
+      ],
+      "orderStatus": "placed",
+      "timeline": [
+        {
+          "status": "placed",
+          "timestamp": "2026-11-14T13:52:23.928Z",
+          "note": "Order received and confirmed via Razorpay"
+        }
+      ],
+      "createdAt": "2026-11-14T13:52:23.928Z"
+    },
+    {
       "id": "ord_1794664143139",
       "customer": {
         "id": "usr_customer",
@@ -301,6 +812,24 @@
   ],
   "reviews": [
     {
+      "id": "rev_test_1794756311507",
+      "productId": "prod_6",
+      "userId": "usr_customer",
+      "userName": "John Doe",
+      "rating": 5,
+      "comment": "Super fast delivery and great quality!",
+      "createdAt": "2026-11-15T15:25:11.507Z"
+    },
+    {
+      "id": "rev_1794664964910",
+      "productId": "prod_6",
+      "userId": "usr_customer",
+      "userName": "John Doe",
+      "rating": 5,
+      "comment": "km",
+      "createdAt": "2026-11-14T14:02:44.910Z"
+    },
+    {
       "id": "rev_test_1793863464766",
       "productId": "prod_6",
       "userId": "usr_customer",
@@ -338,25 +867,6 @@
     }
   ],
   "carts": {
-    "guest": [
-      {
-        "id": "prod_6",
-        "name": "Keychron K2 Pro Wireless Mechanical Keyboard",
-        "price": 8499,
-        "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=700&q=80",
-        "vendorId": "usr_vendor1",
-        "vendorName": "TechWorld Official",
-        "qty": 3
-      },
-      {
-        "id": "prod_4",
-        "name": "Urban Oversized Heavyweight Cotton Hoodie",
-        "price": 2499,
-        "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=700&q=80",
-        "vendorId": "usr_vendor2",
-        "vendorName": "UrbanStyle Fashion",
-        "qty": 1
-      }
-    ]
+    "guest": []
   }
 }

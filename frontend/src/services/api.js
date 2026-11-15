@@ -117,6 +117,18 @@ export const api = {
     return res.json();
   },
 
+  async clearCart() {
+    try {
+      const res = await fetch(`${API_BASE}/cart/clear`, {
+        method: 'DELETE',
+        headers: getHeaders()
+      });
+      return await res.json();
+    } catch {
+      return { message: 'Cart cleared locally' };
+    }
+  },
+
   // Coupons
   async validateCoupon(code, amount) {
     const res = await fetch(`${API_BASE}/coupons/validate`, {

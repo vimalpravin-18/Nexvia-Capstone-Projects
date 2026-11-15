@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
-import { ShieldCheck, CreditCard, Lock, ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, CreditCard, Lock, ArrowLeft, CheckCircle2, AlertTriangle, ShoppingBag, ArrowRight } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import { api } from '../services/api';
@@ -28,6 +28,7 @@ function CheckoutPage() {
   const [paymentGateway, setPaymentGateway] = useState('Razorpay');
   const [processing, setProcessing] = useState(false);
   const [paymentStep, setPaymentStep] = useState('form');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleInputChange = (e) => {
     setAddress({ ...address, [e.target.name]: e.target.value });
@@ -36,19 +37,21 @@ function CheckoutPage() {
   const handlePlaceOrder = async (e) => {
     e.preventDefault();
     if (!address.fullName || !address.street || !address.city || !address.pincode) {
-      alert('Please fill all required shipping fields');
+      setErrorMessage('Please provide all required shipping fields to proceed');
       return;
     }
 
+    setErrorMessage('');
     setProcessing(true);
     setPaymentStep('processing');
 
     try {
-      // Simulate Razorpay / Stripe Connect intent & verification
+      // Create Razorpay payment intent
       await api.createPaymentOrder(finalTotal);
-      await new Promise(resolve => setTimeout(resolve, 1200));
+      await new Promise(resolve => setTimeout(resolve, 1000));
 
-      const verification = await api.verifyPayment({
+      // Verify payment transaction
+      await api.verifyPayment({
         paymentId: 'pay_' + Date.now(),
         orderId: 'order_gw_' + Math.floor(Math.random() * 10000)
       });
@@ -70,14 +73,16 @@ function CheckoutPage() {
       };
 
       const createdOrder = await api.createOrder(orderPayload);
+      
+      // Clean up cart safely
       clearCart();
 
       setPaymentStep('success');
       setTimeout(() => {
         navigate(`/order-success/${createdOrder.id}`);
-      }, 1000);
+      }, 800);
     } catch (err) {
-      alert(err.message || 'Payment failed');
+      setErrorMessage(err.message || 'Payment processing failed. Please try again.');
       setProcessing(false);
       setPaymentStep('form');
     }
@@ -85,9 +90,24 @@ function CheckoutPage() {
 
   if (cartItems.length === 0 && paymentStep === 'form') {
     return (
-      <div className="container checkout-empty">
-        <h2>Your cart is empty</h2>
-        <Link to="/catalog" className="btn btn-primary">Back to Catalog</Link>
+      <div className="checkout-page">
+        <div className="container">
+          <div className="checkout-empty-card card">
+            <div className="empty-circle-icon">
+              <ShoppingBag size={44} />
+            </div>
+            <h2>No items pending checkout</h2>
+            <p>Your shopping bag is currently empty. Explore our multi-vendor catalog to discover trending electronics and gadgets.</p>
+            <div className="empty-cta-group">
+              <Link to="/catalog" className="btn btn-primary">
+                Browse Marketplace <ArrowRight size={16} />
+              </Link>
+              <Link to="/orders" className="btn btn-secondary">
+                View Past Orders
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -103,6 +123,13 @@ function CheckoutPage() {
           <h1>Checkout & Payment</h1>
           <p>Complete your shipping and payment to place the multi-vendor order</p>
         </div>
+
+        {errorMessage && (
+          <div className="checkout-error-banner">
+            <AlertTriangle size={18} />
+            <span>{errorMessage}</span>
+          </div>
+        )}
 
         <form onSubmit={handlePlaceOrder} className="checkout-layout">
           <div className="checkout-main">
