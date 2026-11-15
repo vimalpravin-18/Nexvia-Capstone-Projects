@@ -19,8 +19,8 @@
         "storeName": "TechWorld Official",
         "description": "Premium gadgets, smartphones, and audio gear.",
         "commissionRate": 10,
-        "balance": 568848,
-        "totalSales": 57,
+        "balance": 713205,
+        "totalSales": 60,
         "status": "approved"
       },
       "createdAt": "2026-10-25T04:27:59.711Z"
@@ -185,6 +185,165 @@
     }
   ],
   "orders": [
+    {
+      "id": "ord_1794757109423",
+      "customer": {
+        "id": "usr_admin",
+        "name": "Platform Admin",
+        "email": "admin@nexvia.com"
+      },
+      "items": [
+        {
+          "productId": "prod_6",
+          "name": "Keychron K2 Pro Wireless Mechanical Keyboard",
+          "price": 8499,
+          "qty": 1,
+          "vendorId": "usr_vendor1",
+          "vendorName": "TechWorld Official",
+          "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=700&q=80"
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "Platform Admin",
+        "phone": "+91 9876543210",
+        "street": "142 Innovation Park, 4th Avenue",
+        "city": "Bengaluru",
+        "state": "Karnataka",
+        "pincode": "560001"
+      },
+      "paymentMethod": "Razorpay",
+      "paymentStatus": "paid",
+      "totalAmount": 8499,
+      "discountAmount": 0,
+      "couponCode": null,
+      "finalAmount": 8499,
+      "platformCommissionTotal": 850,
+      "vendorPayouts": [
+        {
+          "vendorId": "usr_vendor1",
+          "vendorName": "TechWorld Official",
+          "subtotal": 8499,
+          "commissionFee": 850,
+          "payoutAmount": 7649,
+          "status": "allocated"
+        }
+      ],
+      "orderStatus": "placed",
+      "timeline": [
+        {
+          "status": "placed",
+          "timestamp": "2026-11-15T15:38:29.423Z",
+          "note": "Order received and confirmed via Razorpay"
+        }
+      ],
+      "createdAt": "2026-11-15T15:38:29.423Z"
+    },
+    {
+      "id": "ord_1794756695178",
+      "customer": {
+        "id": "usr_admin",
+        "name": "Platform Admin",
+        "email": "admin@nexvia.com"
+      },
+      "items": [
+        {
+          "productId": "prod_1",
+          "name": "Apple iPhone 16 Pro Max (256GB, Desert Titanium)",
+          "price": 134900,
+          "qty": 1,
+          "vendorId": "usr_vendor1",
+          "vendorName": "TechWorld Official",
+          "image": "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=700&q=80"
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "Platform Admin",
+        "phone": "+91 9876543210",
+        "street": "142 Innovation Park, 4th Avenue",
+        "city": "Bengaluru",
+        "state": "Karnataka",
+        "pincode": "560001"
+      },
+      "paymentMethod": "Razorpay",
+      "paymentStatus": "paid",
+      "totalAmount": 134900,
+      "discountAmount": 0,
+      "couponCode": null,
+      "finalAmount": 134900,
+      "platformCommissionTotal": 13490,
+      "vendorPayouts": [
+        {
+          "vendorId": "usr_vendor1",
+          "vendorName": "TechWorld Official",
+          "subtotal": 134900,
+          "commissionFee": 13490,
+          "payoutAmount": 121410,
+          "status": "allocated"
+        }
+      ],
+      "orderStatus": "placed",
+      "timeline": [
+        {
+          "status": "placed",
+          "timestamp": "2026-11-15T15:31:35.178Z",
+          "note": "Order received and confirmed via Razorpay"
+        }
+      ],
+      "createdAt": "2026-11-15T15:31:35.178Z"
+    },
+    {
+      "id": "ord_1794756567240",
+      "customer": {
+        "id": "usr_customer",
+        "name": "John Doe",
+        "email": "customer@nexvia.com"
+      },
+      "items": [
+        {
+          "productId": "prod_6",
+          "name": "Keychron K2 Pro Wireless Mechanical Keyboard",
+          "price": 8499,
+          "qty": 2,
+          "vendorId": "usr_vendor1",
+          "vendorName": "TechWorld Official",
+          "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=700&q=80"
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "John Doe",
+        "phone": "+91 9876543210",
+        "street": "142 Innovation Park, 4th Avenue",
+        "city": "Bengaluru",
+        "state": "Karnataka",
+        "pincode": "560001"
+      },
+      "paymentMethod": "Razorpay",
+      "paymentStatus": "paid",
+      "totalAmount": 16998,
+      "discountAmount": 0,
+      "couponCode": null,
+      "finalAmount": 16998,
+      "platformCommissionTotal": 1700,
+      "vendorPayouts": [
+        {
+          "vendorId": "usr_vendor1",
+          "vendorName": "TechWorld Official",
+          "subtotal": 16998,
+          "commissionFee": 1700,
+          "payoutAmount": 15298,
+          "status": "allocated"
+        }
+      ],
+      "orderStatus": "placed",
+      "timeline": [
+        {
+          "status": "placed",
+          "timestamp": "2026-11-15T15:29:27.240Z",
+          "note": "Order received and confirmed via Razorpay"
+        }
+      ],
+      "createdAt": "2026-11-15T15:29:27.240Z"
+    },
     {
       "id": "ord_1794666547474",
       "customer": {

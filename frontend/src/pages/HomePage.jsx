@@ -161,31 +161,39 @@ function HomePage() {
       <section className="trust-strip">
         <div className="container trust-container">
           <div className="trust-item">
-            <ShieldCheck size={22} className="trust-icon" />
+            <div className="trust-icon-box">
+              <ShieldCheck size={22} />
+            </div>
             <div>
-              <strong>100% Buyer Escrow</strong>
-              <p>Payment released on delivery</p>
+              <strong>100% Buyer Protection</strong>
+              <p>Escrow released on delivery</p>
             </div>
           </div>
           <div className="trust-item">
-            <TrendingUp size={22} className="trust-icon" />
+            <div className="trust-icon-box">
+              <TrendingUp size={22} />
+            </div>
             <div>
               <strong>Automated Payouts</strong>
               <p>90% net earnings to merchants</p>
             </div>
           </div>
           <div className="trust-item">
-            <Truck size={22} className="trust-icon" />
+            <div className="trust-icon-box">
+              <Truck size={22} />
+            </div>
             <div>
               <strong>Live Stage Tracking</strong>
               <p>Placed → Packed → Shipped</p>
             </div>
           </div>
           <div className="trust-item">
-            <Zap size={22} className="trust-icon" />
+            <div className="trust-icon-box">
+              <Zap size={22} />
+            </div>
             <div>
-              <strong>Instant PDF Invoices</strong>
-              <p>GST-compliant documentation</p>
+              <strong>GST Tax Invoices</strong>
+              <p>Instant PDF download</p>
             </div>
           </div>
         </div>

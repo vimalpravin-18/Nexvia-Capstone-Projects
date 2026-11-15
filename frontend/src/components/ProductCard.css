@@ -25,9 +25,10 @@
 .product-card-image-wrap {
   position: relative;
   width: 100%;
-  padding-top: 76%;
+  padding-top: 78%;
   background: #f8fafc;
   overflow: hidden;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .product-card-image-wrap img {
@@ -46,22 +47,23 @@
 
 .product-badges-overlay {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  right: 12px;
+  top: 10px;
+  left: 10px;
+  right: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   pointer-events: none;
+  z-index: 2;
 }
 
 .product-card-category {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
   color: #334155;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  padding: 3px 8px;
+  padding: 3px 9px;
   border-radius: 6px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -69,7 +71,7 @@
 }
 
 .product-card-badge {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 800;
   padding: 3px 8px;
   border-radius: 6px;
@@ -82,12 +84,13 @@
 .product-card-badge.popular {
   background: linear-gradient(135deg, #f59e0b, #d97706);
   color: #ffffff;
-  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4);
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.35);
 }
 
 .product-card-badge.discount {
-  background: #fee2e2;
-  color: #ef4444;
+  background: linear-gradient(135deg, #f43f5e, #e11d48);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(244, 63, 94, 0.35);
 }
 
 .product-card-body {
@@ -102,12 +105,13 @@
   color: #64748b;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
   margin-bottom: 6px;
 }
 
 .vendor-shield {
   color: #10b981;
+  flex-shrink: 0;
 }
 
 .product-vendor-meta strong {
@@ -142,6 +146,7 @@
   background: #fef3c7;
   padding: 2px 7px;
   border-radius: 4px;
+  border: 1px solid #fde68a;
 }
 
 .rating-value {
@@ -210,12 +215,12 @@
 .product-add-btn:hover {
   background: var(--primary);
   color: #ffffff;
-  transform: scale(1.03);
-  box-shadow: 0 4px 12px rgba(67, 56, 202, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
 }
 
 .product-add-btn.added {
   background: #10b981;
   color: #ffffff;
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
 }
