@@ -384,6 +384,30 @@
   opacity: 1;
 }
 
+.category-card-box.cat-mobiles:hover { border-color: #3b82f6; }
+.category-card-box.cat-mobiles::before { background: linear-gradient(90deg, #2563eb, #38bdf8); }
+.category-card-box.cat-mobiles .cat-icon-bubble { background: #eff6ff; }
+
+.category-card-box.cat-audio:hover { border-color: #0d9488; }
+.category-card-box.cat-audio::before { background: linear-gradient(90deg, #0d9488, #2dd4bf); }
+.category-card-box.cat-audio .cat-icon-bubble { background: #f0fdfa; }
+
+.category-card-box.cat-wearables:hover { border-color: #f59e0b; }
+.category-card-box.cat-wearables::before { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+.category-card-box.cat-wearables .cat-icon-bubble { background: #fffbeb; }
+
+.category-card-box.cat-fashion:hover { border-color: #f43f5e; }
+.category-card-box.cat-fashion::before { background: linear-gradient(90deg, #f43f5e, #fb7185); }
+.category-card-box.cat-fashion .cat-icon-bubble { background: #fff1f2; }
+
+.category-card-box.cat-footwear:hover { border-color: #8b5cf6; }
+.category-card-box.cat-footwear::before { background: linear-gradient(90deg, #8b5cf6, #c084fc); }
+.category-card-box.cat-footwear .cat-icon-bubble { background: #f5f3ff; }
+
+.category-card-box.cat-accessories:hover { border-color: #0284c7; }
+.category-card-box.cat-accessories::before { background: linear-gradient(90deg, #0284c7, #38bdf8); }
+.category-card-box.cat-accessories .cat-icon-bubble { background: #f0f9ff; }
+
 .cat-icon-bubble {
   font-size: 2rem;
   width: 52px;

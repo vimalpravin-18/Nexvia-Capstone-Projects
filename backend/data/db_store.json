@@ -19,8 +19,8 @@
         "storeName": "TechWorld Official",
         "description": "Premium gadgets, smartphones, and audio gear.",
         "commissionRate": 10,
-        "balance": 713205,
-        "totalSales": 60,
+        "balance": 720854,
+        "totalSales": 61,
         "status": "approved"
       },
       "createdAt": "2026-10-25T04:27:59.711Z"
@@ -185,6 +185,59 @@
     }
   ],
   "orders": [
+    {
+      "id": "ord_1794757953676",
+      "customer": {
+        "id": "usr_customer",
+        "name": "John Doe",
+        "email": "customer@nexvia.com"
+      },
+      "items": [
+        {
+          "productId": "prod_6",
+          "name": "Keychron K2 Pro Wireless Mechanical Keyboard",
+          "price": 8499,
+          "qty": 1,
+          "vendorId": "usr_vendor1",
+          "vendorName": "TechWorld Official",
+          "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=700&q=80"
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "John Doe",
+        "phone": "+91 9876543210",
+        "street": "142 Innovation Park, 4th Avenue",
+        "city": "Bengaluru",
+        "state": "Karnataka",
+        "pincode": "560001"
+      },
+      "paymentMethod": "Razorpay",
+      "paymentStatus": "paid",
+      "totalAmount": 8499,
+      "discountAmount": 0,
+      "couponCode": null,
+      "finalAmount": 8499,
+      "platformCommissionTotal": 850,
+      "vendorPayouts": [
+        {
+          "vendorId": "usr_vendor1",
+          "vendorName": "TechWorld Official",
+          "subtotal": 8499,
+          "commissionFee": 850,
+          "payoutAmount": 7649,
+          "status": "allocated"
+        }
+      ],
+      "orderStatus": "placed",
+      "timeline": [
+        {
+          "status": "placed",
+          "timestamp": "2026-11-15T15:52:33.676Z",
+          "note": "Order received and confirmed via Razorpay"
+        }
+      ],
+      "createdAt": "2026-11-15T15:52:33.676Z"
+    },
     {
       "id": "ord_1794757109423",
       "customer": {

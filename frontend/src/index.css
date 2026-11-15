@@ -1,21 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Brand Color System */
-  --primary: #4f46e5;
-  --primary-hover: #4338ca;
-  --primary-light: #eef2ff;
-  --primary-border: #c7d2fe;
-  --primary-glow: rgba(79, 70, 229, 0.25);
+  /* Brand Color System - Electric Cobalt, Deep Ocean & Sunset Tangerine */
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-dark: #1e40af;
+  --primary-light: #eff6ff;
+  --primary-border: #bfdbfe;
+  --primary-glow: rgba(37, 99, 235, 0.25);
 
-  --secondary: #0284c7;
-  --secondary-hover: #0369a1;
-  --secondary-light: #f0f9ff;
-  --secondary-border: #bae6fd;
+  --secondary: #0d9488;
+  --secondary-hover: #0f766e;
+  --secondary-light: #f0fdfa;
+  --secondary-border: #99f6e4;
 
-  --accent-cyan: #06b6d4;
-  --accent-cyan-light: #ecfeff;
-  --accent-cyan-border: #a5f3fc;
+  --accent-cyan: #0284c7;
+  --accent-cyan-light: #f0f9ff;
+  --accent-cyan-border: #bae6fd;
+
+  --accent-tangerine: #f97316;
+  --accent-tangerine-hover: #ea580c;
+  --accent-tangerine-light: #fff7ed;
+  --accent-tangerine-border: #fed7aa;
 
   --accent-rose: #f43f5e;
   --accent-rose-light: #fff1f2;
@@ -40,8 +46,8 @@
   --bg-subtle: #f1f5f9;
   --bg-muted: #e2e8f0;
   
-  --bg-dark: #0a0f1d;
-  --bg-dark-card: #141c2e;
+  --bg-dark: #070d19;
+  --bg-dark-card: #0f172a;
   --bg-dark-border: rgba(255, 255, 255, 0.1);
 
   /* Typography */
@@ -55,7 +61,7 @@
   --border-color: #e2e8f0;
   --border-subtle: #f1f5f9;
   --border-strong: #cbd5e1;
-  --border-focus: #4f46e5;
+  --border-focus: #2563eb;
 
   /* Radius */
   --radius-xs: 6px;
@@ -71,7 +77,7 @@
   --shadow-md: 0 8px 20px -4px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.03);
   --shadow-lg: 0 16px 36px -8px rgba(15, 23, 42, 0.1), 0 6px 12px -4px rgba(15, 23, 42, 0.04);
   --shadow-xl: 0 24px 50px -12px rgba(15, 23, 42, 0.16);
-  --shadow-glow: 0 0 20px rgba(79, 70, 229, 0.25);
+  --shadow-glow: 0 0 20px rgba(37, 99, 235, 0.3);
 
   --font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
@@ -161,6 +167,7 @@ input, select, textarea {
 
 .badge-primary { background: var(--primary-light); color: var(--primary); border: 1px solid var(--primary-border); }
 .badge-secondary { background: var(--secondary-light); color: var(--secondary); border: 1px solid var(--secondary-border); }
+.badge-tangerine { background: var(--accent-tangerine-light); color: var(--accent-tangerine-hover); border: 1px solid var(--accent-tangerine-border); }
 .badge-success { background: var(--success-light); color: var(--success-dark); border: 1px solid var(--success-border); }
 .badge-warning { background: var(--accent-amber-light); color: #b45309; border: 1px solid var(--accent-amber-border); }
 .badge-danger { background: var(--danger-light); color: #b91c1c; border: 1px solid var(--danger-border); }
@@ -175,7 +182,7 @@ input, select, textarea {
   padding: 10px 20px;
   border-radius: var(--radius-md);
   font-size: 0.92rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.01em;
   transition: all var(--transition-fast);
   user-select: none;
@@ -186,14 +193,14 @@ input, select, textarea {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
 }
 .btn-primary:hover {
-  background: linear-gradient(135deg, #4338ca 0%, #3730a3 100%);
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(79, 70, 229, 0.4);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.45);
 }
 
 .btn-secondary {
@@ -210,12 +217,12 @@ input, select, textarea {
 }
 
 .btn-accent {
-  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(14, 165, 233, 0.3);
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);
 }
 .btn-accent:hover {
-  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
   transform: translateY(-1px);
 }
 

@@ -217,7 +217,7 @@ function HomePage() {
               <Link
                 key={cat}
                 to={`/catalog?category=${encodeURIComponent(cat)}`}
-                className="category-card-box"
+                className={`category-card-box cat-${cat.toLowerCase()}`}
               >
                 <div className="cat-icon-bubble">
                   {categoryIcons[cat] || '📦'}
