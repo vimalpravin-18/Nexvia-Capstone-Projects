@@ -1,4 +1,8 @@
-const BACKEND_URL = import.meta.env.VITE_API_URL || '';
+let rawUrl = (import.meta.env.VITE_API_URL || '').trim();
+if (rawUrl.endsWith('/')) rawUrl = rawUrl.slice(0, -1);
+if (rawUrl.endsWith('/api')) rawUrl = rawUrl.slice(0, -4);
+
+const BACKEND_URL = rawUrl;
 const API_BASE = BACKEND_URL ? `${BACKEND_URL}/api` : '/api';
 
 const getHeaders = () => {
