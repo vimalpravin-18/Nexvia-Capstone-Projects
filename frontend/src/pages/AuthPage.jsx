@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { Store, User, ShieldCheck, ArrowRight, Lock, Mail, Info, KeyRound } from 'lucide-react';
+import { Store, User, Lock, Mail } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import './AuthPage.css';
 
@@ -53,17 +53,10 @@ function AuthPage() {
         navigate('/catalog');
       }
     } catch (err) {
-      setError(err.message || 'Authentication failed. Please verify credentials.');
+      setError(err.message || 'Authentication failed. Please check your credentials.');
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleFillCredentials = (demoEmail, demoRole) => {
-    setIsLogin(true);
-    setEmail(demoEmail);
-    setPassword('password123');
-    setError('');
   };
 
   return (
@@ -191,41 +184,6 @@ function AuthPage() {
               {loading ? 'Authenticating with JWT...' : isLogin ? 'Sign In' : 'Create Account'}
             </button>
           </form>
-
-          {/* Quick Credential Helper for Evaluators */}
-          <div className="demo-accounts-strip">
-            <div className="demo-header-row">
-              <KeyRound size={14} className="key-icon" />
-              <span className="demo-label">Evaluation Credentials (Click to pre-fill form):</span>
-            </div>
-            <div className="demo-buttons">
-              <button
-                type="button"
-                onClick={() => handleFillCredentials('customer@nexvia.com', 'customer')}
-                className="demo-btn customer"
-                title="Fill Customer login credentials"
-              >
-                <User size={13} /> Customer (customer@nexvia.com)
-              </button>
-              <button
-                type="button"
-                onClick={() => handleFillCredentials('vendor1@nexvia.com', 'vendor')}
-                className="demo-btn vendor"
-                title="Fill Vendor login credentials"
-              >
-                <Store size={13} /> Vendor (vendor1@nexvia.com)
-              </button>
-              <button
-                type="button"
-                onClick={() => handleFillCredentials('admin@nexvia.com', 'admin')}
-                className="demo-btn admin"
-                title="Fill Admin login credentials"
-              >
-                <ShieldCheck size={13} /> Admin (admin@nexvia.com)
-              </button>
-            </div>
-            <small className="demo-note">Password for all test accounts: <code>password123</code></small>
-          </div>
         </div>
       </div>
     </div>

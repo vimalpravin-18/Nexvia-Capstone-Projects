@@ -186,57 +186,7 @@ const initialCoupons = [
   }
 ];
 
-const initialOrders = [
-  {
-    id: "ord_101",
-    customer: {
-      id: "usr_customer",
-      name: "John Doe",
-      email: "customer@nexvia.com"
-    },
-    items: [
-      {
-        productId: "prod_2",
-        name: "Sony WH-1000XM5 Wireless Noise-Cancelling Headphones",
-        price: 29990,
-        qty: 1,
-        vendorId: "usr_vendor1",
-        vendorName: "TechWorld Official",
-        image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=700&q=80"
-      }
-    ],
-    shippingAddress: {
-      fullName: "John Doe",
-      street: "142 Innovation Park, 4th Avenue",
-      city: "Bengaluru",
-      state: "Karnataka",
-      pincode: "560001",
-      phone: "+91 9876543210"
-    },
-    paymentMethod: "Razorpay",
-    paymentStatus: "paid",
-    totalAmount: 29990,
-    discountAmount: 0,
-    finalAmount: 29990,
-    platformCommissionTotal: 2999,
-    vendorPayouts: [
-      {
-        vendorId: "usr_vendor1",
-        subtotal: 29990,
-        commissionFee: 2999,
-        payoutAmount: 26991,
-        status: "pending_payout"
-      }
-    ],
-    orderStatus: "shipped",
-    timeline: [
-      { status: "placed", timestamp: new Date(Date.now() - 86400000 * 2).toISOString(), note: "Order placed successfully" },
-      { status: "packed", timestamp: new Date(Date.now() - 86400000 * 1).toISOString(), note: "Item packed at TechWorld Warehouse" },
-      { status: "shipped", timestamp: new Date().toISOString(), note: "Dispatched via Express Courier" }
-    ],
-    createdAt: new Date(Date.now() - 86400000 * 2).toISOString()
-  }
-];
+const initialOrders = [];
 
 const initialReviews = [
   {
