@@ -83,6 +83,14 @@ An enterprise-grade online school platform engineered for modern education acade
 - **Background Jobs:** BullMQ + Redis for asynchronous video transcoding and thumbnail generation.
 - **Media Delivery:** AWS CloudFront distribution routing with local HTTP 206 Partial Content byte-range video streaming fallback.
 
+
+### 🌐 Live Deployment
+- **Frontend Application (Vercel):** [https://nexvia-capstone-projects-hcv3.vercel.app](https://nexvia-capstone-projects-hcv3.vercel.app)  
+  *(Vercel Root Directory: `FS-03/frontend`)*
+- **Backend API (Render):** [https://nexvia-capstone-projects.onrender.com](https://nexvia-capstone-projects.onrender.com)  
+  *(Render Root Directory: `FS-03/backend` — Health Check: `/api/health`)*
+  
+
 ### 🔑 Test Accounts for Evaluation
 | Role | Email | Password | Access Scope |
 |---|---|---|---|
