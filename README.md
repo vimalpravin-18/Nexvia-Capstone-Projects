@@ -34,7 +34,7 @@ Nexvia-Projects/
 | Project ID | Project Title | Architecture | Status | Documentation |
 |---|---|---|---|:---:|
 | **`FS-01`** | **Multi-Vendor E-Commerce Marketplace** | React 19 • Node.js • MongoDB • Redis • Elasticsearch DSL • Razorpay | **Completed & Ready** | [FS-01 Documentation](./FS-01/README.md) |
-| **`FS-03`** | **Nexvia Capstone Assignment 2** | *TBD upon project kickoff* | **In Development** | [FS-03 Documentation](./FS-03/README.md) |
+| **`FS-03`** | **Learning Management System with Live Classes** | React 19 • Redux Toolkit • Node.js • MongoDB • WebRTC • FFmpeg • BullMQ • CloudFront | **Completed & Ready** | [FS-03 Documentation](./FS-03/README.md) |
 
 ---
 
@@ -69,12 +69,27 @@ An enterprise-grade, Amazon/Shopify-style multi-vendor platform where multiple i
 
 ---
 
-## 🔮 Project 2: FS-03 — Nexvia Assignment 2
+## 🎓 Project 2: FS-03 — Learning Management System with Live Classes
 
 ### 📌 Overview
-Capstone Project **FS-03** is organized in a dedicated directory and scheduled for development immediately following Project 1. The workspace contains an isolated, production-ready directory scaffold ready for implementation.
+An enterprise-grade online school platform engineered for modern education academies. Features curriculum authoring, HD video lesson streaming, real-time peer-to-peer WebRTC live classrooms with camera/mic controls and screen sharing, timed interactive quizzes with automated grading, tamper-proof certificates of completion with verification serials, and automated instructor revenue splitting.
 
-- **Status:** Pending implementation.
+### 🛠️ Technology Stack
+- **Frontend:** React 19, Redux Toolkit, React Router v7, Lucide Icons, Canvas Confetti.
+- **Backend:** Node.js, Express.js REST API engine, JWT RBAC (Student, Instructor, Admin).
+- **Database:** MongoDB & Mongoose schemas with isolated `nexvia_lms` namespace and persistent local fallback.
+- **Live Classroom:** WebRTC (`RTCPeerConnection`) with Socket.io real-time signaling and Google STUN servers.
+- **Video Processing:** FFmpeg (`fluent-ffmpeg` with installer binaries) for automated metadata extraction and faststart MP4 optimization.
+- **Background Jobs:** BullMQ + Redis for asynchronous video transcoding and thumbnail generation.
+- **Media Delivery:** AWS CloudFront distribution routing with local HTTP 206 Partial Content byte-range video streaming fallback.
+
+### 🔑 Test Accounts for Evaluation
+| Role | Email | Password | Access Scope |
+|---|---|---|---|
+| **Student (Diane Nguyen)** | `student@nexvia.com` | `password123` | Student Dashboard, Video Lessons, Enrolled Courses, Quizzes, Certificates, Live Classroom |
+| **Instructor (Jenny Wilson)** | `instructor@nexvia.com` | `password123` | Instructor Studio, Course Builder, Video Uploader, Schedule Live Classes, Earnings |
+| **Administrator** | `admin@nexvia.com` | `password123` | Platform Command Center, Course Approval/Rejection Queue, User Directory |
+
 - **Directory:** [`./FS-03`](./FS-03)
 - **Detailed Specifications:** Refer to [FS-03 README](./FS-03/README.md).
 

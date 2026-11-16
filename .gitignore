@@ -20,6 +20,8 @@ FS-01/backend/uploads/*
 !FS-01/backend/uploads/.gitkeep
 FS-03/backend/uploads/*
 !FS-03/backend/uploads/.gitkeep
+FS-03/backend/data/*.json
+!FS-03/backend/data/.gitkeep
 
 # System & OS Files
 .DS_Store
