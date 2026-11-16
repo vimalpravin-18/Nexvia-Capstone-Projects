@@ -40,6 +40,13 @@ The application follows the mandatory MERN stack with strict architectural isola
 
 ---
 
+### 🌐 Live Deployment
+- **Frontend Application (Vercel):** [https://nexvia-capstone-projects-hcv3.vercel.app](https://nexvia-capstone-projects-hcv3.vercel.app)  
+  *(Vercel Root Directory: `FS-03/frontend`)*
+- **Backend API (Render):** [https://nexvia-capstone-projects.onrender.com](https://nexvia-capstone-projects.onrender.com)  
+  *(Render Root Directory: `FS-03/backend` — Health Check: `/api/health`)*
+  
+
 ## 2. Key Features
 
 ### 🎓 A. Student Experience (Inspired by Ace Academy, Mentora & DronePilot)
