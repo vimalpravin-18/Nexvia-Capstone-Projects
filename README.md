@@ -86,8 +86,8 @@ Capstone Project **FS-03** is organized in a dedicated directory and scheduled f
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/vimalpravin-18/Nexvia-Vendor-marketplace.git
-   cd Nexvia-Vendor-marketplace
+   git clone https://github.com/vimalpravin-18/Nexvia-Capstone-Projects.git
+   cd Nexvia-Capstone-Projects
    ```
 
 2. **Run Backend Service (`FS-01/backend`):**
