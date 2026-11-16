@@ -547,124 +547,151 @@
 
 @media (max-width: 640px) {
   .hero-section {
-    padding: 38px 0 32px;
+    padding: 26px 0 24px;
+    overflow: hidden;
   }
   .hero-container {
-    gap: 28px;
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
   }
   .hero-pill-badge {
-    font-size: 0.74rem;
+    font-size: 0.72rem;
     padding: 4px 10px;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
+    max-width: 100%;
+    white-space: normal;
   }
   .hero-title {
-    font-size: 1.85rem;
-    line-height: 1.2;
-    margin-bottom: 14px;
+    font-size: 1.55rem;
+    line-height: 1.22;
+    margin-bottom: 12px;
+    word-break: break-word;
   }
   .hero-description {
-    font-size: 0.92rem;
-    line-height: 1.55;
-    margin-bottom: 20px;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin-bottom: 18px;
   }
   .hero-cta-group {
     flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 8px;
+    margin-bottom: 18px;
+    width: 100%;
   }
   .hero-cta-group .btn {
     width: 100%;
     justify-content: center;
+    padding: 11px 16px;
   }
   .hero-coupon-banner {
     flex-direction: column;
     align-items: stretch;
-    gap: 10px;
-    padding: 12px;
+    gap: 8px;
+    padding: 10px 12px;
+    width: 100%;
+    box-sizing: border-box;
   }
   .btn-copy-coupon {
     width: 100%;
     text-align: center;
+    padding: 8px;
   }
   .hero-glass-card {
-    padding: 16px;
+    padding: 14px;
     border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .glass-card-header {
+    flex-wrap: wrap;
+    gap: 8px;
   }
   .glass-product-preview {
     padding: 10px;
-    gap: 12px;
+    gap: 10px;
   }
   .preview-img {
-    width: 64px;
-    height: 64px;
+    width: 56px;
+    height: 56px;
   }
   .preview-price {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
   }
   .glass-split-pill {
-    padding: 10px 12px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 10px 6px;
+    gap: 4px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+  .split-metric {
+    text-align: center;
   }
   .split-metric small {
-    font-size: 0.65rem;
+    font-size: 0.62rem;
   }
   .split-metric strong {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
   }
   .trust-container {
     grid-template-columns: 1fr;
-    gap: 12px;
-  }
-  .trust-box {
-    padding: 18px 16px;
-  }
-  .categories-grid-cards {
-    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
+  .trust-box {
+    padding: 16px 14px;
+  }
+  .categories-grid-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
   .category-card {
-    padding: 14px 10px;
+    padding: 12px 8px;
   }
   .category-icon-circle {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
   }
   .category-name {
-    font-size: 0.84rem;
+    font-size: 0.82rem;
   }
   .category-count {
-    font-size: 0.72rem;
+    font-size: 0.7rem;
   }
   .section-head {
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
-    margin-bottom: 18px;
+    gap: 6px;
+    margin-bottom: 14px;
   }
   .section-title {
-    font-size: 1.45rem;
+    font-size: 1.35rem;
   }
   .vendor-spotlight-card {
-    padding: 24px 18px;
+    padding: 20px 14px;
     border-radius: var(--radius-lg);
-    gap: 24px;
+    gap: 20px;
   }
   .spotlight-left h2 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
   .spotlight-left p {
-    font-size: 0.9rem;
-    margin-bottom: 20px;
+    font-size: 0.88rem;
+    margin-bottom: 16px;
   }
   .spotlight-actions {
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
   }
   .spotlight-actions .btn {
     width: 100%;
     justify-content: center;
   }
   .spotlight-metrics-panel {
-    padding: 18px 14px;
-    gap: 14px;
+    padding: 16px 12px;
+    gap: 12px;
   }
 }

@@ -80,7 +80,7 @@ function Navbar() {
 
           {/* Action Navigation */}
           <nav className="navbar-nav">
-            <Link to="/catalog" className={`nav-link ${location.pathname === '/catalog' ? 'active' : ''}`}>
+            <Link to="/catalog" className={`nav-link nav-link-explore ${location.pathname === '/catalog' ? 'active' : ''}`}>
               Explore
             </Link>
 

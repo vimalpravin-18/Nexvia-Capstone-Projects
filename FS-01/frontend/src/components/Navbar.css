@@ -411,12 +411,30 @@
 
 @media (max-width: 960px) {
   .navbar-container {
+    display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    row-gap: 8px;
+    column-gap: 12px;
+  }
+  .navbar-brand {
+    order: 1;
+    flex-shrink: 0;
+  }
+  .navbar-nav {
+    order: 2;
+    margin-left: auto;
+    flex-shrink: 0;
   }
   .navbar-search {
     order: 3;
-    max-width: 100%;
-    width: 100%;
+    flex: 0 0 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box;
+    margin-top: 4px;
   }
   .subnav-right-badge {
     display: none;
@@ -424,9 +442,23 @@
 }
 
 @media (max-width: 640px) {
+  .nav-link-explore {
+    display: none !important;
+  }
+
   .navbar-top-strip {
     font-size: 0.7rem;
     padding: 5px 0;
+    text-align: center;
+  }
+
+  .top-strip-inner {
+    justify-content: center;
+  }
+
+  .strip-left {
+    justify-content: center;
+    gap: 6px;
   }
 
   .strip-left .dot,
@@ -434,8 +466,7 @@
     display: none;
   }
 
-  .strip-right-links .dot,
-  .strip-right-links span:last-child {
+  .strip-right-links {
     display: none;
   }
 
@@ -443,13 +474,9 @@
     padding: 8px 0;
   }
 
-  .navbar-container {
-    gap: 8px;
-  }
-
   .brand-icon {
-    width: 34px;
-    height: 34px;
+    width: 32px;
+    height: 32px;
   }
 
   .brand-title {
@@ -465,8 +492,8 @@
   }
 
   .nav-link {
-    padding: 6px 8px;
-    font-size: 0.8rem;
+    padding: 5px 8px;
+    font-size: 0.78rem;
   }
 
   .nav-link span {
@@ -474,12 +501,12 @@
   }
 
   .cart-btn {
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
   }
 
   .user-profile-menu {
-    padding: 3px 6px;
+    padding: 2px 6px;
     gap: 4px;
   }
 
@@ -494,8 +521,8 @@
   }
 
   .navbar-search {
-    margin-top: 4px;
-    padding: 2px 3px 2px 12px;
+    margin-top: 6px;
+    padding: 3px 4px 3px 12px;
   }
 
   .navbar-search input {
@@ -505,6 +532,18 @@
   .search-submit-btn {
     padding: 5px 12px;
     font-size: 0.74rem;
+  }
+
+  .subnav-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 8px;
+    padding: 0 4px;
+  }
+
+  .subnav-container::-webkit-scrollbar {
+    display: none;
   }
 
   .subnav-scroll {

@@ -24,7 +24,7 @@ function ProductCard({ product }) {
     <div className="product-card">
       <Link to={`/product/${product.id}`} className="product-card-link">
         <div className="product-card-image-wrap">
-          <img src={imageSrc} alt={product.name} loading="lazy" />
+          <img src={imageSrc} alt={product.name} />
           <div className="product-badges-overlay">
             <span className="product-card-category">{product.category}</span>
             {product.featured ? (

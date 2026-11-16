@@ -13,7 +13,12 @@ import {
   ChevronDown, 
   ShieldCheck,
   BookOpen,
-  Award
+  Award,
+  Menu,
+  X,
+  Compass,
+  LayoutDashboard,
+  PlusCircle
 } from 'lucide-react';
 
 export const Navbar = () => {
@@ -22,6 +27,7 @@ export const Navbar = () => {
   const { user, isAuthenticated } = useSelector((state) => state.auth);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchVal, setSearchVal] = useState('');
 
   const handleSearch = (e) => {
@@ -79,7 +85,7 @@ export const Navbar = () => {
           )}
 
           {/* Right Navigation & User Menu */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             {isAuthenticated && (
               <Link
                 to="/live"
@@ -96,6 +102,7 @@ export const Navbar = () => {
                 <button
                   onClick={() => setDropdownOpen(!dropdownOpen)}
                   className="flex items-center gap-2 p-1.5 pl-2.5 rounded-full hover:bg-slate-100 transition-colors border border-slate-200"
+                  aria-label="User menu"
                 >
                   <img
                     src={user.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150'}
@@ -186,8 +193,150 @@ export const Navbar = () => {
                 </Link>
               </div>
             )}
+
+            {/* Mobile Hamburger Toggle */}
+            {isAuthenticated && (
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="md:hidden p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none"
+                aria-label="Toggle navigation menu"
+              >
+                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            )}
           </div>
         </div>
+
+        {/* Mobile Navigation Drawer */}
+        {isAuthenticated && mobileMenuOpen && (
+          <div className="md:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-5 space-y-3 animate-fade-in shadow-lg">
+            {/* Mobile Search */}
+            <form onSubmit={(e) => { handleSearch(e); setMobileMenuOpen(false); }} className="relative w-full">
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <input
+                type="text"
+                placeholder="Search courses or skills..."
+                value={searchVal}
+                onChange={(e) => setSearchVal(e.target.value)}
+                className="w-full pl-10 pr-4 py-2 text-sm bg-slate-50 border border-slate-200 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+              />
+            </form>
+
+            {/* Role Links */}
+            <nav className="space-y-1 pt-2">
+              {user?.role === 'student' && (
+                <>
+                  <Link
+                    to="/dashboard"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100"
+                  >
+                    <LayoutDashboard className="w-4 h-4 text-blue-600" />
+                    Student Dashboard
+                  </Link>
+                  <Link
+                    to="/courses"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100"
+                  >
+                    <Compass className="w-4 h-4 text-blue-600" />
+                    Browse Courses
+                  </Link>
+                  <Link
+                    to="/live"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-rose-600 hover:bg-rose-50"
+                  >
+                    <Video className="w-4 h-4 text-rose-500" />
+                    Live Classroom
+                  </Link>
+                  <Link
+                    to="/certificates"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100"
+                  >
+                    <Award className="w-4 h-4 text-amber-500" />
+                    My Certificates
+                  </Link>
+                </>
+              )}
+
+              {user?.role === 'instructor' && (
+                <>
+                  <Link
+                    to="/instructor/dashboard"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100"
+                  >
+                    <LayoutDashboard className="w-4 h-4 text-blue-600" />
+                    Instructor Studio
+                  </Link>
+                  <Link
+                    to="/courses"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100"
+                  >
+                    <Compass className="w-4 h-4 text-blue-600" />
+                    Course Catalog
+                  </Link>
+                  <Link
+                    to="/instructor/courses/new"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100"
+                  >
+                    <PlusCircle className="w-4 h-4 text-emerald-500" />
+                    Create New Course
+                  </Link>
+                  <Link
+                    to="/live"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-rose-600 hover:bg-rose-50"
+                  >
+                    <Video className="w-4 h-4 text-rose-500" />
+                    Live Classroom
+                  </Link>
+                </>
+              )}
+
+              {user?.role === 'admin' && (
+                <>
+                  <Link
+                    to="/admin/dashboard"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100"
+                  >
+                    <LayoutDashboard className="w-4 h-4 text-indigo-600" />
+                    Admin Command
+                  </Link>
+                  <Link
+                    to="/courses"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100"
+                  >
+                    <Compass className="w-4 h-4 text-blue-600" />
+                    Catalog Management
+                  </Link>
+                  <Link
+                    to="/live"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-rose-600 hover:bg-rose-50"
+                  >
+                    <Video className="w-4 h-4 text-rose-500" />
+                    Live Class Monitor
+                  </Link>
+                </>
+              )}
+
+              <button
+                onClick={() => { setMobileMenuOpen(false); handleOpenLogout(); }}
+                className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-rose-600 hover:bg-rose-50 transition-colors mt-2 border-t border-slate-100"
+              >
+                <LogOut className="w-4 h-4" />
+                Log Out
+              </button>
+            </nav>
+          </div>
+        )}
       </header>
 
       {/* Professional Logout Confirmation Dialog */}
