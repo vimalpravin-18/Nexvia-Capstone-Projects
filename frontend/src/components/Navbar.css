@@ -422,3 +422,107 @@
     display: none;
   }
 }
+
+@media (max-width: 640px) {
+  .navbar-top-strip {
+    font-size: 0.7rem;
+    padding: 5px 0;
+  }
+
+  .strip-left .dot,
+  .strip-left span:nth-child(n+3) {
+    display: none;
+  }
+
+  .strip-right-links .dot,
+  .strip-right-links span:last-child {
+    display: none;
+  }
+
+  .navbar-main {
+    padding: 8px 0;
+  }
+
+  .navbar-container {
+    gap: 8px;
+  }
+
+  .brand-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .brand-title {
+    font-size: 1.15rem;
+  }
+
+  .brand-subtitle {
+    display: none;
+  }
+
+  .navbar-nav {
+    gap: 6px;
+  }
+
+  .nav-link {
+    padding: 6px 8px;
+    font-size: 0.8rem;
+  }
+
+  .nav-link span {
+    display: none;
+  }
+
+  .cart-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .user-profile-menu {
+    padding: 3px 6px;
+    gap: 4px;
+  }
+
+  .user-text-info {
+    display: none;
+  }
+
+  .avatar-circle {
+    width: 28px;
+    height: 28px;
+    font-size: 0.78rem;
+  }
+
+  .navbar-search {
+    margin-top: 4px;
+    padding: 2px 3px 2px 12px;
+  }
+
+  .navbar-search input {
+    font-size: 0.82rem;
+  }
+
+  .search-submit-btn {
+    padding: 5px 12px;
+    font-size: 0.74rem;
+  }
+
+  .subnav-scroll {
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .subnav-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .subnav-item {
+    font-size: 0.76rem;
+    padding: 3px 8px;
+  }
+
+  .subnav-item.all {
+    font-size: 0.76rem;
+    padding: 3px 6px;
+  }
+}

@@ -154,3 +154,16 @@
   margin-top: 8px;
 }
 
+@media (max-width: 480px) {
+  .auth-page {
+    padding: 24px 0 60px;
+  }
+  .auth-card {
+    padding: 24px 16px;
+    border-radius: var(--radius-lg);
+  }
+  .auth-card-top h2 {
+    font-size: 1.3rem;
+  }
+}
+

@@ -61,7 +61,7 @@
       "brand": "Keychron",
       "stock": 20,
       "rating": 5,
-      "numReviews": 5,
+      "numReviews": 0,
       "images": [
         "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=700&q=80"
       ],
@@ -186,51 +186,6 @@
   ],
   "orders": [],
   "reviews": [
-    {
-      "id": "rev_test_1794759559123",
-      "productId": "prod_6",
-      "userId": "usr_customer",
-      "userName": "John Doe",
-      "rating": 5,
-      "comment": "Super fast delivery and great quality!",
-      "createdAt": "2026-11-15T16:19:19.123Z"
-    },
-    {
-      "id": "rev_test_1794756311507",
-      "productId": "prod_6",
-      "userId": "usr_customer",
-      "userName": "John Doe",
-      "rating": 5,
-      "comment": "Super fast delivery and great quality!",
-      "createdAt": "2026-11-15T15:25:11.507Z"
-    },
-    {
-      "id": "rev_1794664964910",
-      "productId": "prod_6",
-      "userId": "usr_customer",
-      "userName": "John Doe",
-      "rating": 5,
-      "comment": "km",
-      "createdAt": "2026-11-14T14:02:44.910Z"
-    },
-    {
-      "id": "rev_test_1793863464766",
-      "productId": "prod_6",
-      "userId": "usr_customer",
-      "userName": "John Doe",
-      "rating": 5,
-      "comment": "Super fast delivery and great quality!",
-      "createdAt": "2026-11-05T07:24:24.766Z"
-    },
-    {
-      "id": "rev_test_1793863440445",
-      "productId": "prod_6",
-      "userId": "usr_customer",
-      "userName": "John Doe",
-      "rating": 5,
-      "comment": "Super fast delivery and great quality!",
-      "createdAt": "2026-11-05T07:24:00.445Z"
-    },
     {
       "id": "rev_1",
       "productId": "prod_1",

@@ -344,3 +344,25 @@
   }
 }
 
+@media (max-width: 640px) {
+  .order-success-page {
+    padding: 20px 0 50px;
+  }
+  .success-banner {
+    padding: 24px 16px;
+  }
+  .success-banner h1 {
+    font-size: 1.5rem;
+  }
+  .success-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .success-actions .btn {
+    width: 100%;
+  }
+  .tax-invoice-printable {
+    padding: 18px 14px;
+  }
+}
+

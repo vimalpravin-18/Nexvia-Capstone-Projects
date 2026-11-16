@@ -17,6 +17,7 @@ function CatalogPage() {
   const [sortBy, setSortBy] = useState('newest');
   const [maxPrice, setMaxPrice] = useState(150000);
   const [loading, setLoading] = useState(true);
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -133,8 +134,23 @@ function CatalogPage() {
           </div>
         </div>
 
+        {/* Mobile Filter Toggle */}
+        <div className="mobile-filter-bar">
+          <button
+            type="button"
+            className={`mobile-filter-btn ${showMobileFilters ? 'active' : ''}`}
+            onClick={() => setShowMobileFilters(!showMobileFilters)}
+          >
+            <SlidersHorizontal size={16} />
+            <span>{showMobileFilters ? 'Hide Filters' : 'Filter & Refine'}</span>
+            {selectedCategory !== 'All' && (
+              <span className="mobile-active-cat-pill">{selectedCategory}</span>
+            )}
+          </button>
+        </div>
+
         <div className="catalog-layout">
-          <aside className="catalog-sidebar">
+          <aside className={`catalog-sidebar ${showMobileFilters ? 'mobile-expanded' : ''}`}>
             <div className="sidebar-section">
               <div className="sidebar-head">
                 <SlidersHorizontal size={16} />

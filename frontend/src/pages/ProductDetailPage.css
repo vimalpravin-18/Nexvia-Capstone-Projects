@@ -414,3 +414,55 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 640px) {
+  .product-detail-page {
+    padding: 16px 0 50px;
+  }
+  .product-detail-layout {
+    padding: 18px 14px;
+    gap: 22px;
+    border-radius: var(--radius-lg);
+  }
+  .main-image-wrap {
+    padding-top: 85%;
+  }
+  .thumb-btn {
+    width: 54px;
+    height: 54px;
+  }
+  .product-title {
+    font-size: 1.35rem;
+    line-height: 1.25;
+  }
+  .product-meta-row {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .product-vendor-card {
+    padding: 12px 14px;
+  }
+  .price-main .price-val {
+    font-size: 1.75rem;
+  }
+  .add-cart-action-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .qty-control {
+    justify-content: center;
+  }
+  .btn-add-main {
+    width: 100%;
+    justify-content: center;
+    padding: 12px;
+  }
+  .reviews-list-col h2,
+  .write-review-box h3 {
+    font-size: 1.15rem;
+  }
+  .write-review-box {
+    padding: 18px 14px;
+  }
+}
