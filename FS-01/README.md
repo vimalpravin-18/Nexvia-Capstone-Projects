@@ -34,6 +34,18 @@ Nexvia is an enterprise-grade multi-vendor e-commerce platform built to solve th
 
 ---
 
+## 📸 Application Visual Previews
+
+| Desktop Storefront | Multi-Facet Catalog Discovery |
+|:---:|:---:|
+| ![Desktop Homepage](./screenshots/01_homepage_desktop.png) | ![Catalog Products](./screenshots/02_catalog_products.png) |
+
+| Product Detail & Customer Reviews | Mobile Responsive Storefront |
+|:---:|:---:|
+| ![Product Detail](./screenshots/03_product_detail.png) | ![Mobile Responsive](./screenshots/05_mobile_responsive_store.png) |
+
+---
+
 ## 🛠️ Required Tech Stack Matrix
 
 | Technology | Role | Implementation Highlights |
@@ -190,6 +202,18 @@ nexvia-marketplace/
 
 ---
 
+## 📸 Application Visual Previews
+
+| Desktop Storefront | Multi-Facet Catalog Discovery |
+|:---:|:---:|
+| ![Desktop Homepage](./screenshots/01_homepage_desktop.png) | ![Catalog Products](./screenshots/02_catalog_products.png) |
+
+| Product Detail & Customer Reviews | Mobile Responsive Storefront |
+|:---:|:---:|
+| ![Product Detail](./screenshots/03_product_detail.png) | ![Mobile Responsive](./screenshots/05_mobile_responsive_store.png) |
+
+---
+
 ## ⚡ Quickstart Guide
 
 ### Prerequisites
@@ -216,6 +240,18 @@ npm run dev
 cd backend
 node tests/api.test.js
 ```
+
+---
+
+## 📸 Application Visual Previews
+
+| Desktop Storefront | Multi-Facet Catalog Discovery |
+|:---:|:---:|
+| ![Desktop Homepage](./screenshots/01_homepage_desktop.png) | ![Catalog Products](./screenshots/02_catalog_products.png) |
+
+| Product Detail & Customer Reviews | Mobile Responsive Storefront |
+|:---:|:---:|
+| ![Product Detail](./screenshots/03_product_detail.png) | ![Mobile Responsive](./screenshots/05_mobile_responsive_store.png) |
 
 ---
 
