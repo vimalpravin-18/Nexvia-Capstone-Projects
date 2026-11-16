@@ -42,7 +42,7 @@ Nexvia is an enterprise-grade multi-vendor e-commerce platform built to solve th
 
 | Product Detail & Customer Reviews | Mobile Responsive Storefront |
 |:---:|:---:|
-| ![Product Detail](./screenshots/03_product_detail.png) | ![Mobile Responsive](./screenshots/05_mobile_responsive_store.png) |
+| ![Product Detail](./screenshots/03_product_detail.png)
 
 ---
 
