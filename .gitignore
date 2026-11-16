@@ -1,0 +1,42 @@
+# Nexvia Multi-Project Root .gitignore
+
+# Environment & Sensitive Credentials (NEVER COMMIT)
+**/.env
+**/.env.local
+**/.env.*.local
+*.env
+
+# Dependencies
+**/node_modules/
+package-lock.json.bak
+
+# Production Build Outputs
+**/dist/
+**/dist-ssr/
+**/.cache/
+
+# Uploads & Media Storage
+FS-01/backend/uploads/*
+!FS-01/backend/uploads/.gitkeep
+FS-03/backend/uploads/*
+!FS-03/backend/uploads/.gitkeep
+
+# System & OS Files
+.DS_Store
+Thumbs.db
+
+# IDE & Editor Configurations
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs
+**/logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
