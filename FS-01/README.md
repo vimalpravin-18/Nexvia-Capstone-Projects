@@ -1,270 +1,217 @@
-# Nexvia — Multi-Vendor E-Commerce Marketplace
-> An Amazon-style full-stack marketplace platform where multiple vendors sell, customers buy, and the platform automates split payments, commissions, and order fulfillment.
+# Project 1 – Nexvia Marketplace
 
----
+## 1. Project Overview
 
-## 📌 Executive Summary & Architecture Overview
+Nexvia Marketplace is a full-stack web application developed as part of the Nexvia Technologies technical assessment.
 
-Nexvia is an enterprise-grade multi-vendor e-commerce platform built to solve the challenges of distributed commerce:
-1. **Multi-Vendor Isolation & Ownership:** Independent merchants register, manage store profiles, list products, track warehouse stock, and fulfill orders.
-2. **Automated Split Payments & Commission:** Platform automatically retains a configurable commission fee (10%) and credits net revenue (90%) directly to each respective vendor's wallet balance upon successful payment capture.
-3. **Session & Cart High-Speed Caching:** Employs Redis with sub-millisecond retrieval and TTL management for customer active carts, with resilient memory-cache fallback.
-4. **Elasticsearch-Ready Discovery Engine:** Full-text fuzzy search across product titles, descriptions, categories, and brands with dynamic multi-facet filtering and price sorting.
-5. **End-to-End Fulfillment Lifecycle:** Customer and vendor order lifecycle tracking across four milestones: `Placed` → `Packed` → `Shipped` → `Delivered`.
-6. **GST-Ready Tax Invoices:** Built-in downloadable/printable tax invoices with itemized vendor breakdown and transparent commission audit trails.
+The platform provides a comprehensive multi-vendor online marketplace experience with user authentication, independent vendor store management, product discovery and catalog management, Redis-backed shopping cart functionality, automated split payment processing, order fulfillment tracking, and GST-compliant invoice generation.
 
+## 2. Technology Stack
+
+### Frontend
+- React.js (React 19)
+- Vite
+- React Router DOM
+- Lucide React (Icons)
+- JavaScript (ES6+)
+- HTML5
+- CSS3 (Responsive Design with CSS Variables & Tokens)
+
+### Backend
+- Node.js
+- Express.js
+- REST APIs
+- JWT Authentication (JSON Web Tokens with RBAC)
+- Multer (Multipart file processing)
+- CORS & Helmet Security Middleware
+
+### Database
+- MongoDB
+- Mongoose ODM (Schemas, validation, indexes, and resilient file-backed fallback)
+
+### Cloud and Integrations
+- AWS S3 (Media asset storage & pre-signed URL generation)
+- Razorpay / Stripe (Automated split payments: 10% platform commission, 90% vendor payout)
+- Redis (Cart caching and session key-value storage with memory adapter fallback)
+- Elasticsearch DSL (Fuzzy full-text search, multi-facet filtering, and price range sorting)
+
+## 3. Key Features
+
+### Authentication
+- User registration and login for Customers, Vendors, and Administrators
+- JWT-based authentication with secure cookie/header token transmission
+- Protected routes with Role-Based Access Control (RBAC)
+- Built-in role switcher for rapid assessment evaluation
+
+### Marketplace
+- Multi-vendor product listing with stock and category badges
+- Detailed product pages with specifications, pricing breakdown, and customer reviews
+- Elasticsearch Query DSL fuzzy search and multi-facet category/price filtering
+- Vendor store profiles and vendor-specific product isolation
+- Merchant inventory and stock management CRUD operations
+
+### Shopping and Orders
+- High-speed Redis-backed persistent shopping cart
+- Promotional coupon code validation (e.g., `WELCOME10` for 10% discount)
+- Split payment calculation and simulated checkout with Razorpay/Stripe Connect
+- Automated earnings distribution: 90% to merchant balance, 10% platform fee
+- Customer order history with four-stage lifecycle tracking (`Placed` → `Packed` → `Shipped` → `Delivered`)
+- GST-compliant downloadable and printable tax invoices with itemized merchant breakdown
+
+### Media Management
+- Product image uploads with file format and size validation
+- AWS S3 cloud storage integration with local multipart file fallback
+
+### Additional Features
+- Vendor Analytics Dashboard: real-time sales revenue, wallet balance, and pending fulfillment alerts
+- Administrator Command Center: platform GMV analytics, commission tracking, and vendor onboarding/suspension
+- 100% Mobile responsive layout optimized for all device viewports with zero horizontal overflow
+
+## 4. Application Architecture
+
+```text
+React Frontend (Vite)
+      |
+      | REST API / JSON
+      |
+Node.js + Express Backend
+      |
+      | Mongoose ODM
+      |
+MongoDB Database
+
+External Integrations:
+- AWS S3 (Media Storage)
+- Razorpay / Stripe (Payment Split Gateway)
+- Redis (Session & Cart Cache)
+- Elasticsearch DSL (Product Search)
 ```
-                              ┌───────────────────────────────────┐
-                              │     Nexvia React 19 Frontend      │
-                              │ (Customer, Vendor & Admin Portals)│
-                              └─────────────────┬─────────────────┘
-                                                │ REST API / JSON
-                                                ▼
-                              ┌───────────────────────────────────┐
-                              │     Node.js / Express Backend     │
-                              └───────┬───────────┬───────────────┘
-                                      │           │
-                 ┌────────────────────┴─────┐     └──────────────────────┐
-                 ▼                          ▼                            ▼
-   ┌───────────────────────────┐ ┌────────────────────┐   ┌──────────────────────────┐
-   │ MongoDB / Mongoose Engine │ │ Redis Cart Cache   │   │ Razorpay / Stripe Split  │
-   │ (Users, Products, Orders) │ │ (TTL Cart Sessions)│   │ (Commission Distribution)│
-   └───────────────────────────┘ └────────────────────┘   └──────────────────────────┘
-```
 
----
+## 5. Folder Structure
 
-## 📸 Application Visual Previews
-
-| Desktop Storefront | Multi-Facet Catalog Discovery |
-|:---:|:---:|
-| ![Desktop Homepage](./screenshots/01_homepage_desktop.png) | ![Catalog Products](./screenshots/02_catalog_products.png) |
-
-| Product Detail & Customer Reviews | Mobile Responsive Storefront |
-|:---:|:---:|
-| ![Product Detail](./screenshots/03_product_detail.png)
-
----
-
-## 🛠️ Required Tech Stack Matrix
-
-| Technology | Role | Implementation Highlights |
-|---|---|---|
-| **React 19 (Vite)** | Frontend Single Page Application | Role-based navigation, responsive CSS tokens, Cart & Auth Context |
-| **Node.js & Express** | RESTful Backend API | Modular controllers, JWT authentication, error handling |
-| **MongoDB & Mongoose** | Primary Database | Schemas with validation, indexes, and resilient file-backed fallback |
-| **Redis** | High-Performance Caching | Fast cart caching with session keys and in-memory adapter |
-| **Elasticsearch DSL** | Search & Discovery | Multi-match fuzzy search, category term filters, range queries |
-| **Multer & AWS S3** | Media Asset Storage | Multipart uploads with S3 pre-signed URL generation and static serving |
-| **Razorpay / Stripe** | Payment Gateway Simulation | Automated commission split (10% platform, 90% vendor payout) |
-
----
-
-## 👥 Role-Based Access Control (RBAC)
-
-Nexvia supports three distinct user personas, accessible seamlessly via the role switcher in the navbar:
-
-| Feature / Permission | Customer | Vendor (Merchant) | Platform Admin |
-|---|:---:|:---:|:---:|
-| Browse Catalog & Search Filters | ✅ | ✅ | ✅ |
-| Product Details & Customer Reviews | ✅ | ✅ | ✅ |
-| Manage Shopping Cart & Apply Coupons | ✅ | ❌ | ❌ |
-| Checkout & Razorpay/Stripe Simulation | ✅ | ❌ | ❌ |
-| View My Orders & Printable Tax Invoice | ✅ | ❌ | ❌ |
-| Vendor Portal: Catalog CRUD & Stock Edit | ❌ | ✅ | ✅ |
-| Vendor Portal: Image File Upload | ❌ | ✅ | ✅ |
-| Vendor Portal: Order Fulfillment Stepper | ❌ | ✅ | ✅ |
-| Vendor Portal: View Net Balance & Payouts | ❌ | ✅ | ❌ |
-| Admin Portal: Platform GMV & Revenue Analytics | ❌ | ❌ | ✅ |
-| Admin Portal: Vendor Onboarding & Suspension | ❌ | ❌ | ✅ |
-
-### Quick Demo Accounts
-
-| Role | Email | Password | Store Name |
-|---|---|---|---|
-| **Customer** | `customer@nexvia.com` | `password123` | *N/A (Shopper Profile)* |
-| **Vendor** | `vendor1@nexvia.com` | `password123` | TechWorld Official |
-| **Vendor 2** | `vendor2@nexvia.com` | `password123` | UrbanStyle Fashion |
-| **Admin** | `admin@nexvia.com` | `password123` | Platform Master Control |
-
----
-
-## 📡 REST API Reference
-
-### 1. Authentication (`/api/auth`)
-- `POST /api/auth/register` — Register a customer or vendor account.
-- `POST /api/auth/login` — Sign in and receive a 7-day signed JWT token.
-- `GET /api/auth/me` — Retrieve active authenticated session and vendor profile.
-- `PUT /api/auth/vendor/profile` — Update vendor store name and bio (Vendor only).
-
-### 2. Products & Search (`/api/products`)
-- `GET /api/products` — Retrieve products with Elasticsearch Query DSL search, category filter, price bounding, and sorting (`price_asc`, `price_desc`, `rating`, `newest`).
-- `GET /api/products/categories` — Get unique product categories.
-- `GET /api/products/:id` — Retrieve product details with customer reviews.
-- `POST /api/products` — Create a new product (Vendor/Admin only).
-- `PUT /api/products/:id` — Update pricing, stock, and descriptions (Vendor/Admin only).
-- `DELETE /api/products/:id` — Remove a catalog item (Vendor/Admin only).
-
-### 3. Cart & Redis Caching (`/api/cart`)
-- `GET /api/cart` — Retrieve active cart items from Redis cache.
-- `POST /api/cart/save` — Persist items with TTL in Redis.
-- `DELETE /api/cart/clear` — Invalidate user session cart.
-
-### 4. Payments & Commission Split (`/api/payments`)
-- `GET /api/payments/config` — Fetch active gateway public keys (Razorpay/Stripe).
-- `POST /api/payments/create-order` — Create payment intent with automated 10% commission calculation.
-- `POST /api/payments/verify` — Verify cryptographic signature or gateway callback.
-
-### 5. Orders & Fulfillment (`/api/orders`)
-- `POST /api/orders` — Create multi-vendor order, trigger commission split, and clear cart.
-- `GET /api/orders/myorders` — Fetch logged-in customer purchase history.
-- `GET /api/orders/vendor` — Fetch orders containing items belonging to the vendor.
-- `GET /api/orders/all` — Master order list (Admin only).
-- `GET /api/orders/:id` — Detailed order view with status timeline and tax invoice.
-- `PUT /api/orders/:id/status` — Advance order status (`placed` → `packed` → `shipped` → `delivered`).
-
-### 6. Coupons & Reviews (`/api/coupons`, `/api/reviews`)
-- `POST /api/coupons/validate` — Validate promo code (`WELCOME10`, `FESTIVE20`, `SUPER500`).
-- `POST /api/reviews/:productId` — Submit customer star rating (1-5) and review comment.
-
-### 7. Admin Analytics (`/api/admin`)
-- `GET /api/admin/analytics` — Platform GMV, total commissions retained, order distribution, and top sellers.
-- `GET /api/admin/vendors` — List of registered vendors with sales volume and balances.
-- `PUT /api/admin/vendors/:id/toggle-status` — Approve or suspend a vendor.
-
----
-
-## 📦 Project Directory Layout
-
-```
-nexvia-marketplace/
+```text
+FS-01/
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   └── index.css
+│   ├── package.json
+│   └── vite.config.js
 ├── backend/
-│   ├── config/
-│   │   ├── db.js             # Mongoose connection with resilient fallback
-│   │   ├── redis.js          # Redis cart cache client & memory adapter
-│   │   └── store.js          # Persistent JSON store sync
 │   ├── controllers/
-│   │   ├── adminController.js
-│   │   ├── authController.js
-│   │   ├── cartController.js
-│   │   ├── couponController.js
-│   │   ├── orderController.js
-│   │   ├── paymentController.js
-│   │   ├── productController.js
-│   │   └── reviewController.js
-│   ├── data/
-│   │   ├── db_store.json     # Persistent data store
-│   │   └── seedData.js       # Initial seed products, vendors, coupons
 │   ├── middleware/
-│   │   └── auth.js           # JWT verification and RBAC middleware
-│   ├── models/               # Official Mongoose schemas
-│   │   ├── User.js
-│   │   ├── Product.js
-│   │   ├── Order.js
-│   │   ├── Coupon.js
-│   │   └── Review.js
-│   ├── routes/               # Express route definitions
+│   ├── models/
+│   ├── routes/
 │   ├── services/
-│   │   └── searchService.js  # Elasticsearch Query DSL engine
-│   ├── tests/
-│   │   └── api.test.js       # Automated test suite (7/7 passing)
-│   ├── uploads/              # Multipart product image storage
-│   ├── .env                  # Environment configuration
-│   └── server.js             # Server entry point
-│
-└── frontend/
-    ├── src/
-    │   ├── components/
-    │   │   ├── Navbar.jsx    # Responsive header with search & role switcher
-    │   │   ├── Footer.jsx
-    │   │   └── ProductCard.jsx
-    │   ├── context/
-    │   │   ├── AuthContext.jsx
-    │   │   └── CartContext.jsx
-    │   ├── pages/
-    │   │   ├── HomePage.jsx
-    │   │   ├── CatalogPage.jsx
-    │   │   ├── ProductDetailPage.jsx
-    │   │   ├── CartPage.jsx
-    │   │   ├── CheckoutPage.jsx
-    │   │   ├── OrderSuccessPage.jsx (Printable Tax Invoice & Lifecycle Stepper)
-    │   │   ├── MyOrdersPage.jsx
-    │   │   ├── VendorDashboardPage.jsx (Inventory CRUD, S3 upload, fulfillment)
-    │   │   ├── AdminDashboardPage.jsx (GMV, Commission, Vendor controls)
-    │   │   └── AuthPage.jsx
-    │   ├── services/
-    │   │   └── api.js        # Frontend API client
-    │   ├── App.jsx
-    │   └── index.css         # Modern design tokens & responsive CSS
-    ├── package.json
-    └── vite.config.js        # Vite dev server with reverse proxy
+│   ├── server.js
+│   └── package.json
+├── screenshots/
+│   ├── 01_homepage_desktop.png
+│   ├── 02_catalog_products.png
+│   ├── 03_product_detail.png
+│   ├── 04_cart_checkout.png
+│   ├── 05_mobile_responsive_store.png
+│   └── 06_mobile_catalog_filters.png
+├── .env.example
+└── README.md
 ```
 
----
+## 6. Environment Configuration
 
-## 📸 Application Visual Previews
+Create a `.env` file in the `backend/` directory using `.env.example` as a template:
 
-| Desktop Storefront | Multi-Facet Catalog Discovery |
-|:---:|:---:|
-| ![Desktop Homepage](./screenshots/01_homepage_desktop.png) | ![Catalog Products](./screenshots/02_catalog_products.png) |
+```env
+PORT=5000
+NODE_ENV=development
+MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/nexvia_marketplace
+JWT_SECRET=your_jwt_secret_key_here
+REDIS_URL=redis://localhost:6379
+AWS_ACCESS_KEY_ID=your_aws_access_key
+AWS_SECRET_ACCESS_KEY=your_aws_secret_key
+AWS_REGION=ap-south-1
+AWS_S3_BUCKET=nexvia-marketplace-assets
+RAZORPAY_KEY_ID=your_razorpay_key_id
+RAZORPAY_KEY_SECRET=your_razorpay_key_secret
+```
 
-| Product Detail & Customer Reviews | Mobile Responsive Storefront |
-|:---:|:---:|
-| ![Product Detail](./screenshots/03_product_detail.png) | ![Mobile Responsive](./screenshots/05_mobile_responsive_store.png) |
+Create a `.env` file in the `frontend/` directory:
 
----
+```env
+VITE_API_URL=http://localhost:5000/api
+```
 
-## ⚡ Quickstart Guide
+Refer to `.env.example` for all required configuration variables. Never commit actual credentials or API secrets.
+
+## 7. Installation and Execution
 
 ### Prerequisites
-- Node.js (v18+) & npm
+- Node.js (v18 or higher recommended)
+- npm (v9 or higher)
+- MongoDB connection string or local MongoDB instance
+- Required external service credentials (optional; built-in fallbacks are provided)
 
-### 1. Start the Backend API
+### Backend
+
 ```bash
 cd backend
 npm install
-node server.js
+npm run dev
 ```
-*Backend runs on `http://localhost:5000`.*
 
-### 2. Start the Frontend Application
+Use the production start command defined in package.json when deploying:
+
+```bash
+npm start
+```
+
+### Frontend
+
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
-*Frontend runs on `http://localhost:5173`.*
 
-### 3. Run Automated Tests
+To build for production:
+
 ```bash
-cd backend
-node tests/api.test.js
+npm run build
 ```
 
----
+## 8. Deployment
 
-## 📸 Application Visual Previews
+- **Frontend:** [https://nexvia-vendor-marketplace.vercel.app](https://nexvia-vendor-marketplace.vercel.app) *(Vercel)*
+- **Backend:** [https://nexvia-backend.onrender.com](https://nexvia-backend.onrender.com) *(Render — Health Check: `/api/health`)*
 
-| Desktop Storefront | Multi-Facet Catalog Discovery |
-|:---:|:---:|
-| ![Desktop Homepage](./screenshots/01_homepage_desktop.png) | ![Catalog Products](./screenshots/02_catalog_products.png) |
+### Test Accounts for Evaluation
+- **Customer:** `customer@nexvia.com` / `password123`
+- **Vendor:** `vendor1@nexvia.com` / `password123`
+- **Vendor 2:** `vendor2@nexvia.com` / `password123`
+- **Administrator:** `admin@nexvia.com` / `password123`
 
-| Product Detail & Customer Reviews | Mobile Responsive Storefront |
-|:---:|:---:|
-| ![Product Detail](./screenshots/03_product_detail.png) | ![Mobile Responsive](./screenshots/05_mobile_responsive_store.png) |
+## 9. Screenshots
 
----
+Screenshots demonstrating the actual application are located in `./screenshots/`:
 
-## 🎓 Capstone Presentation & Learning Reflection Guide
+- **Home page:** `./screenshots/01_homepage_desktop.png`
+- **Product listing & filters:** `./screenshots/02_catalog_products.png`
+- **Product details & reviews:** `./screenshots/03_product_detail.png`
+- **Shopping cart & checkout:** `./screenshots/04_cart_checkout.png`
+- **Mobile storefront:** `./screenshots/05_mobile_responsive_store.png`
+- **Mobile catalog & search:** `./screenshots/06_mobile_catalog_filters.png`
 
-### 10-Minute Presentation Summary
-1. **The Problem:** Modern e-commerce platforms struggle with single-seller bottlenecks, manual vendor commission reconciliation, and unorganized fulfillment updates.
-2. **The Architectural Design:** Decoupled React 19 SPA with Node.js/Express REST micro-services, utilizing Redis for fast cart caching, Elasticsearch query structure for search relevance, and Mongoose schemas for data integrity.
-3. **Key Technical Challenge:** Designing the multi-vendor split payment calculation so an order containing items from multiple distinct merchants correctly credits each vendor while allocating the 10% platform fee in a single atomic transaction.
-4. **Results & Verification:** 7/7 automated test suites passing, instantaneous sub-second search filtering, responsive mobile-friendly UX, and compliant printable tax invoices.
-5. **Next Steps:** Production deployment on AWS ECS/Elastic Beanstalk with Amazon S3 bucket integration, Stripe Connect live Webhooks, and Redis ElastiCache cluster.
+## 10. Future Improvements
 
-### Ownership & Learning Reflections
-- **State Management & Caching:** Learned how Redis caching prevents unnecessary database writes during active cart modifications while maintaining session persistence across page reloads.
-- **Enterprise RBAC:** Implemented JWT role authorization middleware that strictly guarantees vendors cannot modify products or inspect finances outside their assigned tenant.
-- **Responsive UI/UX Standards:** Built modern CSS design tokens without bloated third-party component libraries, ensuring lightning-fast load times and cross-browser consistency.
+- Automated push and SMS notifications for order fulfillment status transitions
+- In-app real-time messaging between customers and verified merchants
+- Multi-currency conversion and international payment gateway integration
+- Advanced warehouse inventory multi-location management
+
+## 11. Developer
+
+**Vimal Pravin**
+
+Developed for the Nexvia Technologies technical assessment.
